@@ -1,5 +1,5 @@
 
-const Part = require('../models/Part.js');
+const {Part} = require('../models/Part.js');
 const mongoose = require('mongoose');
 
 
@@ -21,12 +21,13 @@ const getPart = async (req, res) => {
     const part = await Part.findById(id)
 
     if (!part) {
-        return res.status(404).json({'No such part'})
+        return res.status(404).json()
     }
 
     res.status(200).json(part);
 };
 
+// create part
 const createPart = async(req, res) => {
     const {name, size, quantity, partNumber} = req.body
 
@@ -35,12 +36,23 @@ const createPart = async(req, res) => {
     if(!name) {
         emptyFields.push('name')
     }
+    if(!size) {
+        emptyFields.push('size')
+    }
+    if(!quantity) {
+        emptyFields.push('quantity')
+    }
+    if(!partNumber) {
+        emptyFields.push('partNumber')
+    }
+
     if(emptyFields.length > 0) {
         return res.status(400).json({ error: 'Please fill in all the fields', emptyFields })
     }
 
+    // add doc to the db
     try{
-        const part = await Part.create({name, size quantity})
+        const part = await Part.create({name, size, quantity, partNumber})
         res.status(200).json(part)
     } catch (error) {
         res.status(400).json({ error: error.message})
@@ -58,7 +70,7 @@ const createPart = async(req, res) => {
         const part = await Part.findOneAndDelete({ _id: id})
 
         if (!workout) {
-            return res.status(400).json({'No such part'})
+            return res.status(400).json({ error: 'No such part'})
         }
 
         res.status(200).json(part)
