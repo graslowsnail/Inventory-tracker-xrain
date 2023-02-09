@@ -12,8 +12,7 @@ const userSchema = new Schema(
             type: String,
             required: true,
             minLength: 5
-        },
-
+        }
     })
 
 // ser up pre-save middlewear to create password
@@ -26,7 +25,7 @@ userSchema.pre('save', async function
             (this.password, saltRounds);
         }
 
-        nect();
+        next();
     });
 
 // compare the incom ing passowrd with the hased password

@@ -14,4 +14,8 @@ app.use(express.json());
 mongoConnection();
 
 
+app.get('/', (req,res) => {
+    res.send('HelloWorld!');
+});
 app.listen(PORT, () => console.log(`🌍 Connected on localhost:${PORT}`));
+
