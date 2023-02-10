@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
-
 const Schema = mongoose.Schema;
 
-const partschema= new Schema ({
+const partschema = new Schema ({
     name: {
         type: String,
         required: true
@@ -22,5 +21,4 @@ const partschema= new Schema ({
 });
 
 const Part = mongoose.model('Part', partschema);
-
 module.exports = Part;
