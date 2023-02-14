@@ -50,7 +50,6 @@ function classNames(...classes) {
               defaultValue={''}
             />
 
-            {/* Spacer element to match the height of the toolbar */}
             <div className="py-2" aria-hidden="true">
               {/* Matches height of button in toolbar (1px border + 36px content height) */}
               <div className="py-px">
@@ -62,13 +61,6 @@ function classNames(...classes) {
           <div className="absolute inset-x-0 bottom-0 flex justify-between py-2 pl-3 pr-2">
             <div className="flex items-center space-x-5">
               <div className="flex items-center">
-                <button
-                  type="button"
-                  className="-m-2.5 flex h-10 w-10 items-center justify-center rounded-full text-gray-400 hover:text-gray-500"
-                >
-                  <PaperClipIcon className="h-5 w-5" aria-hidden="true" />
-                  <span className="sr-only">Attach a file</span>
-                </button>
               </div>
               <div className="flex items-center">
                 <Listbox value={selected} onChange={setSelected}>

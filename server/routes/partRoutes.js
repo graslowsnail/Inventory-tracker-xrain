@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+
 const {
     createPart,
     getParts,
@@ -7,7 +8,6 @@ const {
     deletePart,
     updatePart
 } = require('../controllers/Part.js');
-
 
 // GET all parts
 router.get('/', getParts)

@@ -9,7 +9,7 @@ const Dashboard = () => {
     
     return (
     <main>
-    <div>
+        <div class='m-10'>
       <div class='grid grid-cols-3 gap-4'>
       <Inventory></Inventory>
     <Note></Note>

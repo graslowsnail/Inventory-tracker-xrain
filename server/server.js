@@ -3,7 +3,10 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
+
 const Part = require('./models/Part.js');
+const partRoutes = require('./routes/partRoutes.js');
+
 
 // express app
 const app = express();
@@ -16,6 +19,7 @@ app.use((req, res, next) => {
     next()
 });
 
+/*
 // mongoose and mongo sandbox routes
 app.get('/add-part', (req, res) => {
  const part = new Part({
@@ -32,14 +36,10 @@ app.get('/add-part', (req, res) => {
             console.log(err);
         });
 })
+    */
+
 // routes
-/*
-app.get('/', (req, res) => {
-    const parts = [
-        {name: 'test Part',size: '1-1/2', quantity: 67, partNumber:'3p1m2dum'},
-    ];
-});
-*/
+app.use('/api/parts', partRoutes);
 
 //connect to db
 mongoose.set('strictQuery', false);
