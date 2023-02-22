@@ -2,9 +2,9 @@ const express = require('express');
 const router = express.Router();
 
 const {
-    createPart,
     getParts,
     getPart,
+    createPart,
     deletePart,
     updatePart
 } = require('../controllers/Part.js');
