@@ -14,7 +14,7 @@ function App() {
       <Header></Header>
       <div className='container'>
       <Routes>
-      <Route path='/' element={<Dashboard />}/>
+      <Route path='/dashboard' element={<Dashboard />}/>
       </Routes>
       </div>
       </div>
