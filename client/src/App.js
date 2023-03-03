@@ -10,37 +10,12 @@ import Header from './components/Header';
 function App() {
   return (
       <Router>
-      <div>
-      <Header></Header>
-      <div className='container'>
-      <Routes>
-      <Route path='/dashboard' element={<Dashboard />}/>
-      </Routes>
-      </div>
-      </div>
+          <Header />
+              <Routes>
+              <Route path='/dashboard' element={<Dashboard />}/>
+              </Routes>
       </Router>
   );
 }
-
-/*
-<div className="container mx-auto bg-gray-200 rounded-xl shadow border p-8 m-10">
-      <p className="text-3xl text-green-700 font-bold mb-5">
-        Welcome!
-      </p>
-      <p className="text-green-500 text-lg">
-        React and Tailwind CSS in action
-      </p>
-    </div>
-    */
-
-
-/*
-      <Header></Header>
-      <div class='grid grid-cols-3 gap-4'>
-      <Inventory></Inventory>
-    <Note></Note>
-      </div>
-    */
-
 
 export default App;
