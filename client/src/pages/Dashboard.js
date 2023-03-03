@@ -1,7 +1,6 @@
 
 // component imports
-import Inventory from '../components/Inventory';
-import Note from '../components/Notes';
+import PartList from '../components/PartList';
 //import 
 
 
@@ -9,10 +8,10 @@ const Dashboard = () => {
     
     return (
     <main>
-        <div class='m-10'>
-      <div class='grid grid-cols-3 gap-4'>
-      <Inventory></Inventory>
-    <Note></Note>
+        <div className='m-10'>
+      <div className='grid place-items-center gap-4'>
+      <PartList/>
+        {/* <Note></Note> */}
       </div>
       </div>
         </main>
