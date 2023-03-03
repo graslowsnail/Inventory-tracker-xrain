@@ -1,16 +1,7 @@
 import Part from '../Part';
 
-// will itterate over the parts collection. will also need to seperate parts by size
-const items = [
-    {id: 1},
-    {id: 2},
-    {id: 3},
-    {id: 4},
-  // More items...
-]
-
 const PartList = props => {
-    if(items.length === 0) {
+    if(props.items.length === 0) {
         return (
             <div>
                 <div>
@@ -21,9 +12,15 @@ const PartList = props => {
         );
     };
   return (
-        <ul   className="space-y-3">
-            {items.map(props => (
-                <Part/>
+        <ul className="space-y-3">
+            {props.items.map(part => (
+                <Part
+                    key={part.id}
+                    id={part.id}
+                title={part.title}
+                description={part.description}
+                stock={part.stock}
+                />
             ))}
         </ul>
   );
