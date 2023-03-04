@@ -1,9 +1,8 @@
 import Part from '../Part';
 
 const PartList = props => {
-    if (!props.items?.length) {
-
-        return (
+            if(props.items.length === 0) {
+                return (
             <div>
                 <div>
                     <h2>No places found. maybe create one?</h2>
@@ -27,5 +26,8 @@ const PartList = props => {
         </ul>
   );
 };
+/*
+    if (!props.items?.length) {
+        */
 
 export default PartList;
