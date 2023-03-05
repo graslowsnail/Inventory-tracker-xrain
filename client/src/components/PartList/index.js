@@ -1,7 +1,7 @@
 import Part from '../Part';
 
 const PartList = props => {
-            if(props.items.length === 0) {
+    if (!props.items?.length) {
                 return (
             <div>
                 <div>
@@ -27,7 +27,7 @@ const PartList = props => {
   );
 };
 /*
-    if (!props.items?.length) {
+            if(props.items.length === 0) {
         */
 
 export default PartList;
