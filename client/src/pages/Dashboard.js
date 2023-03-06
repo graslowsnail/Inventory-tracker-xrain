@@ -11,7 +11,6 @@ const Dashboard = () => {
         <div className='m-10'>
       <div className='grid place-items-center gap-4'>
       <PartList/>
-        {/* <Note></Note> */}
       </div>
       </div>
         </main>
