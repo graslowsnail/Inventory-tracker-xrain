@@ -1,20 +1,23 @@
 // imports 
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {BrowserRouter as Router, Route, Navigate, Routes} from 'react-router-dom';
 
-// page imports
-import Dashboard from './pages/Dashboard.js';
-
-//component imports 
 import Header from './components/Header';
+import Users from './user/pages/Users.js';
 
 function App() {
   return (
-      <Router>
-          <Header />
-              <Routes>
-                  <Route path='/dashboard' element={<Dashboard />}/>
-              </Routes>
-      </Router>
+    <Router>
+      <Header />
+      <main>
+          <Routes>
+          <Route path='/' exact>
+            <Users/>      
+          </Route>
+              <Navigate to='/' />
+          </Routes>
+      </main>
+        
+    </Router>
   );
 }
 
