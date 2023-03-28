@@ -1,18 +1,18 @@
 // imports 
 import {BrowserRouter as Router, Route, Navigate, Routes} from 'react-router-dom';
 
-import Header from './components/Header';
+import MainNavigation from './components/Header/MainNavigation';
 import Users from './user/pages/Users.js';
 
 function App() {
   return (
     <Router>
-      <Header />
+      <MainNavigation />
       <main>
           <Routes>
-          <Route path='/' exact>
-            <Users/>      
-          </Route>
+              <Route path='/' exact>
+                <Users/>      
+              </Route>
               <Navigate to='/' />
           </Routes>
       </main>
