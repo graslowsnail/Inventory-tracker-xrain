@@ -8,8 +8,8 @@ const Dashboard = () => {
     
     return (
     <main>
-        <div className='m-10'>
-      <div className='grid place-items-center gap-4'>
+        <div className=''>
+      <div className=''>
       <PartList/>
       </div>
       </div>

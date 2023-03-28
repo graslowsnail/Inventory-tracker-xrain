@@ -24,7 +24,6 @@ const DUMMY_PARTS = [
 ];
 
 const PartList = props => {
-console.log(DUMMY_PARTS);
     if (!props.items?.length) {
                 return (
             <div>
