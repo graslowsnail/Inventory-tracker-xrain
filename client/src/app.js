@@ -1,23 +1,12 @@
-// imports 
-import {BrowserRouter as Router, Route, Navigate, Routes} from 'react-router-dom';
-
-import MainNavigation from './components/Header/MainNavigation';
-import Users from './user/pages/Users.js';
+import './App.css';
 
 function App() {
   return (
-    <Router>
-      <MainNavigation />
-      <main>
-          <Routes>
-              <Route path='/' exact>
-                <Users/>      
-              </Route>
-              <Navigate to='/' />
-          </Routes>
-      </main>
-        
-    </Router>
+    <div className="App">
+      <header className="App-header">
+        hi
+      </header>
+    </div>
   );
 }
 
