@@ -20,3 +20,17 @@ main {
     color: #003060;
     text-decoration: underline;
 }
+
+.nav-links {
+    position: absolute;
+    right: 150px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+  margin: 1rem;
+  display: inline;
+  text-decoration: underline;
+}
