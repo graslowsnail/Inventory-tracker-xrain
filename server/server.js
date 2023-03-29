@@ -19,25 +19,6 @@ app.use((req, res, next) => {
     next()
 });
 
-/*
-// mongoose and mongo sandbox routes
-app.get('/add-part', (req, res) => {
- const part = new Part({
-    name: 'test2',
-    size: '1-1/2',
-    quantity: 67,
-    partNumber:'3p1m2dum'
- });
-    part.save()
-        .then((result) => {
-            res.send(result)
-        })
-        .catch((err) => {
-            console.log(err);
-        });
-})
-    */
-
 // routes
 app.use('/api/parts', partRoutes);
 
