@@ -19,17 +19,29 @@ const getPartById = async (req, res) => {
     }
 };
 
+// create part
+const createPart = async(req, res) => {
+    const part = new Part ({
+        name: req.body.name,
+        size: req.body.size,
+        quantity: req.body.quantity,
+        partNumber: req.body.partNumber,
+    })
+    await part.save()
+    res.send(part);
+};
+
+
+
 module.exports = {
     getParts,
-    getPartById
+    getPartById,
+    createPart
 };
 
 
 /* 
 
-// create part
-const createPart = async(req, res) => {
-};
 
     // delete a part
 const deletePart = async(req, res) => {

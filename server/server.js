@@ -3,7 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 //routes
-const routes = require('./routes/partRoutes.js');
+const partRoutes = require('./routes/partRoutes.js');
 
 // express app
 const app = express();
@@ -23,9 +23,11 @@ mongoose.connect(
         useUnifiedTopology:true,
     }
 );
-app.use('/api', routes)
 
-// use this to log mongo queries being executed
+
+app.use('/api', partRoutes)
+
+// this logs the mongoDb queries being executed
 mongoose.set('debug', true);
 
 //app.use(require('./routes/partRoutes.js'));
