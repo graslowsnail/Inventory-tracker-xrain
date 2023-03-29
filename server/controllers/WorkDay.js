@@ -7,6 +7,22 @@ const getWorkDays = async (req, res) => {
     res.send(workDays);
 };
 
+// GET WorkDay By DATE
+const getWorkDayByDate = async (req, res) => {
+    try {
+        const workday = await WorkDay.find({
+            createdAt: {
+                $gte: new Date(2023, 2, 29),
+                $lt: new Date(2023, 2, 30)
+            }
+        })
+            res.send(workday);
+    } catch {
+        res.status(404);
+        res.send({ error: 'Part doesnt exist'});
+    }
+};
+
 // CREATE workday
 const createWorkDay = async (req, res) => {
     const workday = new WorkDay ({
@@ -54,5 +70,6 @@ module.exports = {
     getWorkDays,
     createWorkDay,
     deleteWorkDay,
-    updateWorkDay
+    updateWorkDay,
+    getWorkDayByDate
 };
