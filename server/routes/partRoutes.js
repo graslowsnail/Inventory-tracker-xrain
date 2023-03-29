@@ -6,7 +6,8 @@ const {
     getParts,
     getPartById,
     createPart,
-    deletePart
+    deletePart,
+    updatePart
 } = require('../controllers/Part.js');
 
 // GET all parts
@@ -20,5 +21,8 @@ router.post('/parts', createPart)
 
 // DELETE Part
 router.delete('/parts/:id', deletePart)
+
+// UPDATE Part
+router.put('/parts/:id', updatePart)
 
 module.exports = router;

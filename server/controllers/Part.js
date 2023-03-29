@@ -2,13 +2,13 @@ const mongoose = require('mongoose');
 const Part = require('../models/Part.js');
 
 
-// get all parts
+// GET all parts
 const getParts = async (req, res) => {
     const parts = await Part.find();
     res.send(parts);
 };
 
-//get a single part by id
+//GET a single part by id
 const getPartById = async (req, res) => {
     try{
         const part = await Part.findOne({ _id:req.params.id})
@@ -19,7 +19,7 @@ const getPartById = async (req, res) => {
     }
 };
 
-// create part
+// CREATE part
 const createPart = async(req, res) => {
     const part = new Part ({
         name: req.body.name,
@@ -31,7 +31,7 @@ const createPart = async(req, res) => {
     res.send(part);
 };
 
-// delete a part
+// DELETE a part
 const deletePart = async(req, res) => {
     try{
         await Part.deleteOne({ _id: req.params.id})
@@ -42,30 +42,32 @@ const deletePart = async(req, res) => {
     }
 };
 
+// UPDATE a part
+const updatePart = async(req, res) => {
+    try {
+        const part = await Part.findOne({ _id: req.params.id })
 
+        if (!part) {
+            return res.status(404).send({ error: 'Part not found' })
+        }
 
+        part.name = req.body.name
+        part.size = req.body.size
+        part.quantity = req.body.quantity
+        part.partNumber = req.body.partNumber
+
+        await Part.findOneAndUpdate({ _id: req.params.id }, part, { new: true })
+
+        res.send(part)
+    } catch (err) {
+        res.status(500).send({ error: err.message })
+    }
+};
 
 module.exports = {
     getParts,
     getPartById,
     createPart,
-    deletePart
-};
-
-
-/* 
-
-
-
-    // update a part
-    const updatePart = async(req, res) => {
-};
-*/
-
-    /*
-    getPart,
-    createPart,
     deletePart,
     updatePart
-    */
-
+};
