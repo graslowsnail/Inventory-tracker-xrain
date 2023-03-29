@@ -1,17 +1,16 @@
-
-const {Part} = require('../models/Part.js');
 const mongoose = require('mongoose');
+const Part = require('../models/Part.js');
 
 
 // get all parts
 const getParts = async (req, res) => {
-    try{
-        const parts = await Part.find().exec();
-        res.status(200).json(parts);
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ error: 'Internal Server error!!!'});
-    }
+    const parts = await Part.find();
+    res.send(parts);
+
+};
+
+module.exports = {
+    getParts
 };
 
 
@@ -33,14 +32,10 @@ const deletePart = async(req, res) => {
 };
 */
 
-module.exports = {
-    getParts
     /*
     getPart,
     createPart,
     deletePart,
     updatePart
     */
-};
-
 
