@@ -6,18 +6,21 @@ const Part = require('../models/Part.js');
 const getParts = async (req, res) => {
     const parts = await Part.find();
     res.send(parts);
+};
 
+//get a single part by id
+const getPartById = async (req, res) => {
+    const part = await Part.findOne({ _id:req.params.id})
+    res.send(part);
 };
 
 module.exports = {
-    getParts
+    getParts,
+    getPartById
 };
 
 
 /* 
-get a single part
-const getPart = async (req, res) => {
-};
 
 // create part
 const createPart = async(req, res) => {
