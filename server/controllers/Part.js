@@ -10,8 +10,13 @@ const getParts = async (req, res) => {
 
 //get a single part by id
 const getPartById = async (req, res) => {
-    const part = await Part.findOne({ _id:req.params.id})
-    res.send(part);
+    try{
+        const part = await Part.findOne({ _id:req.params.id})
+        res.send(part);
+    } catch {
+        res.status(404);
+        res.send({ error: 'Part doesnt exist!'});
+    }
 };
 
 module.exports = {
