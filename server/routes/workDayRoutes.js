@@ -5,7 +5,8 @@ const WorkDay = require('../models/WorkDay.js');
 const {
     getWorkDays,
     createWorkDay,
-    deleteWorkDay
+    deleteWorkDay,
+    updateWorkDay
 } = require('../controllers/WorkDay.js');
 
 // GET all WorkDays
@@ -16,5 +17,8 @@ router.post('/workdays', createWorkDay)
 
 // DELETE workday
 router.delete('/workdays/:id', deleteWorkDay)
+
+// UPDATE a workDay
+router.put('/workdays/:id', updateWorkDay)
 
 module.exports = router;
