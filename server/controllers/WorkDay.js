@@ -15,7 +15,8 @@ const getWorkDayByDate = async (req, res) => {
                 $gte: new Date(2023, 2, 29),
                 $lt: new Date(2023, 2, 30)
             }
-        })
+        }).populate('partsUsed')
+
             res.send(workday);
     } catch {
         res.status(404);
@@ -68,8 +69,8 @@ const updateWorkDay = async(req, res) => {
 
 module.exports = {
     getWorkDays,
+    getWorkDayByDate,
     createWorkDay,
     deleteWorkDay,
-    updateWorkDay,
-    getWorkDayByDate
+    updateWorkDay
 };
