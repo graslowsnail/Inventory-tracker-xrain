@@ -2,15 +2,20 @@ const express = require('express');
 const router = express.Router();
 
 const {
-    getParts,
+    getParts
+} = require('../controllers/Part.js');
+    /*
     getPart,
     createPart,
     deletePart,
     updatePart
-} = require('../controllers/Part.js');
+    */
+
 
 // GET all parts
 router.get('/', getParts)
+
+/*
 
 // GET a single Part
 router.get('/:id', getPart)
@@ -23,5 +28,7 @@ router.delete('/:id', deletePart)
 
 //UPDATE a part
 router.patch('/:id', updatePart)
+
+    */
 
 module.exports = router;
