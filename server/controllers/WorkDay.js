@@ -19,7 +19,20 @@ const createWorkDay = async (req, res) => {
     res.send(workday);
 };
 
+// DELETE workDay
+const deleteWorkDay = async(req, res) => {
+    try{
+        await WorkDay.deleteOne({ _id: req.params.id})
+        res.status(204).send()
+    } catch {
+        res.status(404)
+        res.send({ error: 'WorkDay doesnt exist'})
+    }
+};
+
+
 module.exports = {
     getWorkDays,
-    createWorkDay
+    createWorkDay,
+    deleteWorkDay
 };
