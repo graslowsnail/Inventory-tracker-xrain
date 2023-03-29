@@ -31,21 +31,31 @@ const createPart = async(req, res) => {
     res.send(part);
 };
 
+// delete a part
+const deletePart = async(req, res) => {
+    try{
+        await Part.deleteOne({ _id: req.params.id})
+        res.status(204).send()
+    }catch{
+        res.status(404)
+        res.send({ error: 'Part did not exist' })
+    }
+};
+
+
 
 
 module.exports = {
     getParts,
     getPartById,
-    createPart
+    createPart,
+    deletePart
 };
 
 
 /* 
 
 
-    // delete a part
-const deletePart = async(req, res) => {
-};
 
     // update a part
     const updatePart = async(req, res) => {
