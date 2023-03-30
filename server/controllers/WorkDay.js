@@ -8,6 +8,34 @@ const getWorkDays = async (req, res) => {
 };
 
 // GET WorkDay By DATE
+// added startDate and endDate QUERY
+const getWorkDayByDate = async (req, res) => {
+    try {
+        const { startDate, endDate } = req.query;
+
+        if (!startDate || !endDate) {
+            throw new Error('startDate and endDate are required');
+        }
+
+        const workday = await WorkDay.find({
+            createdAt: {
+                $gte: new Date(startDate),
+                $lt: new Date(endDate)
+            }
+        }).populate('partsUsed');
+
+        if (!workday) {
+            throw new Error('No workday found for this date range');
+        }
+
+        res.send(workday);
+    } catch (error) {
+        res.status(500).send({ error: error.message });
+    }
+};
+
+/*
+    * CONTROLLER WITHOUT STARTDATE QURY
 const getWorkDayByDate = async (req, res) => {
     try {
         const workday = await WorkDay.find({
@@ -23,6 +51,7 @@ const getWorkDayByDate = async (req, res) => {
         res.send({ error: 'Part doesnt exist'});
     }
 };
+*/
 
 // CREATE workday
 const createWorkDay = async (req, res) => {
