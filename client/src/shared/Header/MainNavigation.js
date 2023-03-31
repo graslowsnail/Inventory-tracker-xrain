@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import MainHeader from './MainHeader.js';
 import NavLinks from './NavLinks';
 import SideDrawer from './SideDrawer';
-import Backdrop from '../UIElements/Backdrop';
+import Backdrop from '../UIElements/Backdrop/Backdrop';
 import './MainNavigation.css';
 
 import xrainLogo from './xrainLogo.jpg';

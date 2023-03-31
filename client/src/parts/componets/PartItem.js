@@ -1,23 +1,23 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-import './PartItem.css';
+import Card from '../../shared/UIElements/Card';
 
+import "./PartItem.css";
 
-const PartItem = props => {
-
+const PartItem = (props) => {
   return (
-    <li className='user-item'>
-      <div className='user-item__content'>
+    <li className="part-item">
+      <Card className="part-item__content">
         <Link to={`parts/${props.id}`}>
           <div>
-            <div className='user-item__info'>
+            <div className="part-item__info">
               <h2>{props.name}</h2>
-          </div>
+            </div>
           </div>
         </Link>
-      </div>
+      </Card>
     </li>
   );
-}
+};
 export default PartItem;

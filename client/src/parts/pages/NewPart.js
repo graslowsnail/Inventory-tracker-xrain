@@ -1,7 +1,7 @@
 
 const NewPart = () => {
   return (
-    <div> NEW PART FORM</div>
+      <div className='center'> NEW PART FORM</div>
   );
 };
 

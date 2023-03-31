@@ -9,7 +9,7 @@ const NavLinks = props => {
             <NavLink to='/parts'> PARTS </NavLink>
         </li>
         <li>
-            <NavLink to='/parts/new'> NEW PART </NavLink>
+            <NavLink to='/new/parts'> NEW PART </NavLink>
         </li>
         <li>
             <NavLink to='/auth'> AUTHENTHICATE </NavLink>

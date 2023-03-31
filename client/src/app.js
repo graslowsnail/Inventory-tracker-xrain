@@ -15,6 +15,9 @@ const App = () => {
           <Routes>
             <Route exact path='/parts' element={<Part/>} />
           </Routes>
+          <Routes>
+            <Route exact path='/new/parts' element={<NewPart/>} />
+          </Routes>
       </main>
     </Fragment>
     </Router>
