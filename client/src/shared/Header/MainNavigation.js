@@ -7,6 +7,8 @@ import SideDrawer from './SideDrawer';
 import Backdrop from '../UIElements/Backdrop';
 import './MainNavigation.css';
 
+import xrainLogo from './xrainLogo.jpg';
+
 const MainNavigation = props => {
   const [drawerIsOpen, setDrawerIsOpen] = useState(false);
 
@@ -36,7 +38,9 @@ const MainNavigation = props => {
         </button>
 
         <h1 className='main-navigation__title'>
-          <Link to='/'> PARTS</Link>
+          <Link to='/'>
+            <img className='logo-style' src={xrainLogo} alt={'Logo'} />
+          </Link>
         </h1>
         <nav className='main-navigation__header-nav'>
           <NavLinks />
