@@ -12,6 +12,9 @@ const NavLinks = props => {
             <NavLink to='/new/parts'> NEW PART </NavLink>
         </li>
         <li>
+            <NavLink to='/new/workday'> NEW WORKDAY </NavLink>
+        </li>
+        <li>
             <NavLink to='/auth'> AUTHENTHICATE </NavLink>
         </li>
     </ul>
