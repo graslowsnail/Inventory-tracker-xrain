@@ -6,6 +6,9 @@ const NavLinks = props => {
   return (
     <ul className='nav-links'>
         <li>
+            <NavLink to='/'> ALL WORKDAY </NavLink>
+        </li>
+        <li>
             <NavLink to='/new/workday'> NEW WORKDAY </NavLink>
         </li>
         <li>
