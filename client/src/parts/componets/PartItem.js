@@ -9,7 +9,7 @@ const PartItem = (props) => {
   return (
     <li className="part-item">
       <Card className="part-item__content">
-        <Link to={`parts/${props.id}`}>
+        <Link to={`parts/${props._id}`}>
           <div>
             <div className="part-item__info">
               <h2>{props.name}</h2>
