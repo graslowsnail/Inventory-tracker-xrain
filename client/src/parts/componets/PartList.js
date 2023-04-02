@@ -18,9 +18,12 @@ const PartList = props => {
     <ul className='part-list'>
       {props.items?.map(part =>(
         <PartItem
-          key={part.id} 
-          id={part.id}
+          key={part._id} 
+          id={part._id}
           name={part.name}
+          size={part.size}
+          quantity={part.quantity}
+          partNumber={part.partNumber}
         />
       ))}
     </ul>

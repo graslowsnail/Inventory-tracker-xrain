@@ -53,7 +53,7 @@ const Input = props => {
   const element = 
     props.element === 'input' ? (
       <input
-        id={props.id}
+        _id={props._id}
         type={props.type}
         placeholder={props.placeholder}
         onChange={changeHandler}
@@ -61,13 +61,28 @@ const Input = props => {
         value={inputState.value}
       />
     ) : (
-      <textarea
-        id={props.id}
-        rows={props.rows || 3}
-        onChange={changeHandler}
-        onBlur={touchHandler}
-        value={inputState.value}
-      />
+      <select 
+      _id={props._id}
+      type={props.type}
+      placeholder={props.placeholder}
+      onChange={changeHandler}
+      onBlur={touchHandler}
+      value={inputState.value}
+      >
+        <option value="OTHER">OTHER</option>
+        <option value="1/4inch">1/4inch</option>
+        <option value="1/2inch">1/2inch</option>
+        <option value="3/4inch">3/4inch</option>
+        <option value="1inch">1inch</option>
+        <option value="1-1/4inch">1-1/4inch</option>
+        <option value="1-1/2inch">1-1/2inch</option>
+        <option value="2inch">2inch</option>
+        <option value="2-1/2inch">2-1/2inch</option>
+        <option value="3inch">3inch</option>
+        <option value="3-1/2inch">3-1/2inch</option>
+        <option value="4inch">4inch</option>
+        <option value="6inch">6inch</option>
+      </select>
     );
 
   return (
@@ -75,7 +90,7 @@ const Input = props => {
     className={`form-control ${!inputState.isValid && inputState.isTouched &&
         'form-control--invalid'}`}
     > 
-    <label htmlFor={props.id}>{props.label}</label>
+    <label htmlFor={props._id}>{props.label}</label>
       {element}
       {!inputState.isValid && inputState.isTouched && <p>{props.errorText}</p>}
     </div>
@@ -84,3 +99,14 @@ const Input = props => {
 };
 
 export default Input;
+
+/*
+      <textarea
+        _id={props._id}
+        rows={props.rows || 3}
+        onChange={changeHandler}
+        onBlur={touchHandler}
+        value={inputState.value}
+      />
+    ) : (
+      */

@@ -13,6 +13,9 @@ const PartItem = (props) => {
           <div>
             <div className="part-item__info">
               <h2>{props.name}</h2>
+              <h3>PART SIZE: {props.size}</h3>
+              <h3>QUANTITY: {props.quantity}</h3>
+              <h3>PARTNUMBER: {props.partNumber}</h3>
             </div>
           </div>
         </Link>

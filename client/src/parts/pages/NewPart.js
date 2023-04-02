@@ -10,7 +10,7 @@ const NewPart = () => {
   const [formState, inputHandler] = useForm(
     {
       name: {
-        value: '',
+        value: 'hi',
         isValid: false
       },
       size: {
@@ -33,44 +33,43 @@ const partSubmitHandler = event => {
 };
 
 return (
-  <form className='place-form' onSubmit={partSubmitHandler}>
+  <form className='part-form' onSubmit={partSubmitHandler}>
     <Input
       id='name'
       element='input'
       type='text'
-      lable='Name'
+      label='name'
       validators={[VALIDATOR_REQUIRE() ]}
-      errorText='Please enter a valid title.'
+      errorText='Please enter a valid partName.'
       onInput={inputHandler}
     />
       <Input 
       id='size'
-      element='textarea'
-      lable='size'
-      validators={[VALIDATOR_MINLENGTH(5)]}
-      errorText= 'please enter a valid descrtiption (at least 5 char long).'
+      element='select'
+      label='size'
+      validators={[VALIDATOR_REQUIRE() ]}
       onInput={inputHandler}
     />
     <Input
       id='quantity'
-      element='textarea'
-      lable='quantity'
+      element='input'
+      label='quantity'
       validators={[VALIDATOR_MINLENGTH(1)]}
       errorText='please enter quantity over 1'
       onInput={inputHandler}
     />
     <Input
       id='partNumber'
-      element='textarea'
-      lable='partNumber'
+      element='input'
+      label='partNumber'
       validators={[VALIDATOR_MINLENGTH(1)]}
       errorText='please enter partNumber longer then  1 char'
       onInput={inputHandler}
     />
 
-    <button type='submit' disabled={!formState.isValid}>
-    ADD PART
-    </button>
+    <Button type='submit' disabled={!formState.isValid}>
+      ADD PART
+    </Button>
 
   </form>
 );
