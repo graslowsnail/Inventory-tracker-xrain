@@ -22,9 +22,6 @@ const App = () => {
             <Route exact path='/new/parts' element={<NewPart/>} />
           </Routes>
           <Routes>
-            <Route exact path='/' element={<WorkDay/>} />
-          </Routes>
-          <Routes>
             <Route exact path='/new/workday' element={<NewWorkDay/>} />
           </Routes>
       </main>
