@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Input from '../../shared/FormElements/Input';
 import Button from '../../shared/FormElements/Button';
+import Card from '../../shared/UIElements/Card';
 import { VALIDATOR_MINLENGTH, VALIDATOR_REQUIRE } from '../../shared/util/validators';
 import './PartForm.css';
 import { useForm } from '../../shared/hooks/form-hook';
@@ -31,6 +32,7 @@ const partSubmitHandler = async event => {
   event.preventDefault();
   //console.log(formState.inputs);// send this to the backend!!!!
     try{
+
     const response = await fetch('http://localhost:3002/api/parts', {
       method: 'POST',
       headers: {
@@ -44,13 +46,16 @@ const partSubmitHandler = async event => {
       })
     });
       const responseData = await response.json();
+
       console.log(responseData);
+      formState(false);
     } catch (err) {
-      console.log(err);
+      console.log(err.message);
     }
 };
 
 return (
+  < Card>
   <form className='part-form' onSubmit={partSubmitHandler}>
     <Input
       id='name'
@@ -92,6 +97,7 @@ return (
     </Button>
 
   </form>
+  </Card>
 );
 };
 
