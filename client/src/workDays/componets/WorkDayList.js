@@ -17,8 +17,8 @@ const WorkDayList = ( props ) => {
 <ul className='part-list'>
       {props.items?.map(part =>(
         < WorkDayItem
-          key={part.id} 
-          id={part.id}
+          key={part._id} 
+          id={part._id}
           name={part.name}
         />
       ))}

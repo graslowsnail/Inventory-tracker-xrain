@@ -16,6 +16,9 @@ const App = () => {
       <MainNavigation />
       <main>
           <Routes>
+            <Route exact path='/' element={<WorkDay/>} />
+          </Routes>
+          <Routes>
             <Route exact path='/parts' element={<Part/>} />
           </Routes>
           <Routes>
