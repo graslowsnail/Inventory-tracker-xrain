@@ -35,18 +35,3 @@ const App = () => {
 
 export default App;
 
-/*
-            <Routes>
-                <Route path='/' exact>
-                </Route>
-                <Route path ='/:userId/places' exact >
-                </Route>
-                <Route path='/places/new' exact>
-                </Route>
-                <Route path='/places/:placeId'>
-                </Route>
-                <Route path='/auth'>
-                </Route>
-                <Navigate to='/' />
-            </Routes>
-  */

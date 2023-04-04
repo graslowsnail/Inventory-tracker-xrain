@@ -10,7 +10,7 @@ const NewPart = () => {
   const [formState, inputHandler] = useForm(
     {
       name: {
-        value: 'hi',
+        value: '',
         isValid: false
       },
       size: {
@@ -27,9 +27,27 @@ const NewPart = () => {
       }
     }, false);
 
-const partSubmitHandler = event => {
+const partSubmitHandler = async event => {
   event.preventDefault();
-  console.log(formState.inputs);// send this to the backend!!!!
+  //console.log(formState.inputs);// send this to the backend!!!!
+    try{
+    const response = await fetch('http://localhost:3002/api/parts', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: formState.inputs.name.value,
+        size: formState.inputs.size.value,
+        quantity: formState.inputs.quantity.value,
+        partNumber: formState.inputs.partNumber.value
+      })
+    });
+      const responseData = await response.json();
+      console.log(responseData);
+    } catch (err) {
+      console.log(err);
+    }
 };
 
 return (
@@ -45,9 +63,11 @@ return (
     />
       <Input 
       id='size'
-      element='select'
+      element='input'
+      type='text'
       label='size'
       validators={[VALIDATOR_REQUIRE() ]}
+      errorText='please enter a ammout of parts'
       onInput={inputHandler}
     />
     <Input

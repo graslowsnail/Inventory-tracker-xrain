@@ -9,6 +9,17 @@ const WorkDayRoutes = require('./routes/workDayRoutes.js');
 // express app
 const app = express();
 
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+  );
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+
+  next();
+});
+
 // middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
