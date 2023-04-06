@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Input from '../../shared/FormElements/Input';
 import Button from '../../shared/FormElements/Button';
+import Card from '../../shared/UIElements/Card';
 import { VALIDATOR_REQUIRE } from '../../shared/util/validators';
 import '../../parts/pages/PartForm.css';
 import { useForm } from '../../shared/hooks/form-hook';
@@ -19,12 +20,31 @@ const NewWorkDay = () => {
       }
   }, false);
 
-  const workDaySubmitHandler = event => {
+  const workDaySubmitHandler = async event => {
     event.preventDefault();
-    console.log(formState.inputs);
+    //console.log(formState.inputs);
+    try {
+    const response = await fetch ('http://localhost:3002/api/workdays', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: formState.inputs.name.value,
+        partsUsed: formState.inputs.partsUsed.value
+      })
+    });
+    const responseData = await response.json();
+
+    console.log(responseData);
+    formState(false);
+  } catch (err) {
+    console.log(err.message);
+  }
   };
 
   return (
+    <Card>
     <form className='part-form' onSubmit={workDaySubmitHandler}>
       <Input
         id='name'
@@ -50,6 +70,7 @@ const NewWorkDay = () => {
     </Button>
 
     </form>
+    </Card>
   );
 };
 
