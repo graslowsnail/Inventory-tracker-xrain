@@ -16,7 +16,7 @@ const NewWorkDay = () => {
       },
       partsUsed: {
         value: '',
-        isValid: false
+        isValid: true
       }
   }, false);
 
@@ -37,7 +37,7 @@ const NewWorkDay = () => {
     const responseData = await response.json();
 
     console.log(responseData);
-    formState(false);
+
   } catch (err) {
     console.log(err.message);
   }
