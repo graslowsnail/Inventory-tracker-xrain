@@ -1,49 +1,60 @@
 .part-item {
-  margin: 1rem;
-  width: calc(45% - 2rem);
-  min-width: 17.5rem;
-}
-
-.part-item a {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  text-decoration: none;
-  padding: 1rem;
-  color: white;
-  background: #ADD8E6;
-}
-
-.part-item a:hover,
-.part-item a:active {
-  background: #ffd900;
+  margin: 1rem 0;
 }
 
 .part-item__content {
   padding: 0;
 }
 
+.part-item__info {
+  padding: 1rem;
+  text-align: center;
+}
+
 .part-item__image {
-  width: 4rem;
-  height: 4rem;
-  margin-right: 1rem;
+  width: 100%;
+  height: 12.5rem;
+  margin-right: 1.5rem;
 }
 
-.part-item__info h2 {
-  font-size: 1.5rem;
+.part-item__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.part-item__info h2,
+.part-item__info h3,
+.part-item__info p {
   margin: 0 0 0.5rem 0;
-  font-weight: normal;
-  color: rgb(85, 89, 90);
 }
 
-.part-item:hover h2,
-.part-item:active h2,
-.part-item:hover h3,
-.part-item:active h3 {
-  color: #292929;
+.part-item__actions {
+  padding: 1rem;
+  text-align: center;
+  border-top: 1px solid #ccc;
 }
 
-.part-item__info h3 {
-  margin: 0;
+.part-item__modal-content {
+  padding: 0;
+}
+
+.part-item__modal-actions {
+  text-align: right;
+}
+
+.part-item__actions button,
+.part-item__actions a {
+  margin: 0.5rem;
+}
+
+.map-container {
+    hight: 15rem;
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+  .part-item__image {
+    height: 20rem;
+  } 
 }
