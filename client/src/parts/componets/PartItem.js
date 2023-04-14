@@ -20,6 +20,7 @@ const PartItem = (props) => {
         }
         setIsDeleting(false);
         console.log('part deleted');
+          window.location.reload();
       })
       .catch(error => {
         setIsDeleting(false);
@@ -48,4 +49,3 @@ const PartItem = (props) => {
 };
 
 export default PartItem;
-
