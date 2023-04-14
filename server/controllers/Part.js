@@ -38,6 +38,7 @@ const deletePart = async(req, res) => {
         res.status(204).send()
     }catch{
         res.status(404)
+        console.log('ERROR DELETEING PART')
         res.send({ error: 'Part did not exist' })
     }
 };
