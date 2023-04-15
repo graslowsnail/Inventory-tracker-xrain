@@ -27,80 +27,76 @@ const NewPart = () => {
         isValid: false
       }
     }, false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
-const partSubmitHandler = async event => {
-  event.preventDefault();
-  //console.log(formState.inputs);// send this to the backend!!!!
-    try{
-
-    const response = await fetch('http://localhost:3002/api/parts', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        name: formState.inputs.name.value,
-        size: formState.inputs.size.value,
-        quantity: formState.inputs.quantity.value,
-        partNumber: formState.inputs.partNumber.value
-      })
-    });
+  const partSubmitHandler = async event => {
+    event.preventDefault();
+    try {
+      const response = await fetch('http://localhost:3002/api/parts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formState.inputs.name.value,
+          size: formState.inputs.size.value,
+          quantity: formState.inputs.quantity.value,
+          partNumber: formState.inputs.partNumber.value
+        })
+      });
       const responseData = await response.json();
-
       console.log(responseData);
-      formState(false);
+      setIsSuccess(true);
+        window.location.reload();
     } catch (err) {
       console.log(err.message);
     }
+  };
+
+  return (
+    <Card>
+      {isSuccess && <p>Part added successfully!</p>}
+      <form className='part-form' onSubmit={partSubmitHandler}>
+        <Input
+          id='name'
+          element='input'
+          type='text'
+          label='name'
+          validators={[VALIDATOR_REQUIRE() ]}
+          errorText='Please enter a valid partName.'
+          onInput={inputHandler}
+        />
+        <Input 
+          id='size'
+          element='input'
+          type='text'
+          label='size'
+          validators={[VALIDATOR_REQUIRE() ]}
+          errorText='please enter a ammout of parts'
+          onInput={inputHandler}
+        />
+        <Input
+          id='quantity'
+          element='input'
+          label='quantity'
+          validators={[VALIDATOR_MINLENGTH(1)]}
+          errorText='please enter quantity over 1'
+          onInput={inputHandler}
+        />
+        <Input
+          id='partNumber'
+          element='input'
+          label='partNumber'
+          validators={[VALIDATOR_MINLENGTH(1)]}
+          errorText='please enter partNumber longer then  1 char'
+          onInput={inputHandler}
+        />
+        <Button type='submit' disabled={!formState.isValid}>
+          ADD PART
+        </Button>
+      </form>
+    </Card>
+  );
 };
-
-return (
-  < Card>
-  <form className='part-form' onSubmit={partSubmitHandler}>
-    <Input
-      id='name'
-      element='input'
-      type='text'
-      label='name'
-      validators={[VALIDATOR_REQUIRE() ]}
-      errorText='Please enter a valid partName.'
-      onInput={inputHandler}
-    />
-      <Input 
-      id='size'
-      element='input'
-      type='text'
-      label='size'
-      validators={[VALIDATOR_REQUIRE() ]}
-      errorText='please enter a ammout of parts'
-      onInput={inputHandler}
-    />
-    <Input
-      id='quantity'
-      element='input'
-      label='quantity'
-      validators={[VALIDATOR_MINLENGTH(1)]}
-      errorText='please enter quantity over 1'
-      onInput={inputHandler}
-    />
-    <Input
-      id='partNumber'
-      element='input'
-      label='partNumber'
-      validators={[VALIDATOR_MINLENGTH(1)]}
-      errorText='please enter partNumber longer then  1 char'
-      onInput={inputHandler}
-    />
-
-    <Button type='submit' disabled={!formState.isValid}>
-      ADD PART
-    </Button>
-
-  </form>
-  </Card>
-);
-};
-
-
 
 export default NewPart;
