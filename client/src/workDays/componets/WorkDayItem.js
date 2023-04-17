@@ -7,7 +7,7 @@ import '../../parts/componets/PartItem.css';
 const WorkDayItem = (props) => {
     const [isDeleting, setIsDeleting]  = useState(false);
     const [showConfirmation, setShowConfirmation] = useState(false);
-    
+
     const deleteWorkdayHandler = () => {
         setIsDeleting(true);
         fetch(`http://localhost:3002/api/workdays/${props.id}`,{
@@ -40,11 +40,12 @@ const WorkDayItem = (props) => {
     <li className="part-item">
       <Card className="part-item__content">
         <div className="part-item__info">
-          <h2>{props.name}</h2>
+          <h2>{props.name} {props.createdAt}</h2>
+          <h3>DATE:{props.createdAt}</h3>
           <h3>PARTNUMBER: {props.partsUsed}</h3>
         </div>
         <div className="part-item__actions">
-          <Button to={`/parts/${props.id}`}>EDIT</Button>
+          <Button to={`/workdays/${props.id}`}>EDIT</Button>
           <Button danger onClick={showConfirmationHandler} disabled={isDeleting}>
               {isDeleting ? 'DELETING...' : 'DELETE'}
           </Button>
