@@ -55,6 +55,31 @@ const getWorkDayByDate = async (req, res) => {
 
 // CREATE workday
 const createWorkDay = async (req, res) => {
+  try {
+    // Validate inputs
+    if (!req.body.name || !req.body.partsUsed) {
+      return res.status(400).json({ error: 'Name and parts used are required' });
+    }
+    // Create new workday object
+    const workday = new WorkDay({
+      name: req.body.name,
+      partsUsed: req.body.partsUsed,
+    });
+    // Save workday to database
+    await workday.save();
+    // Return success response with new workday object
+    res.status(201).json({
+      message: 'Workday created successfully',
+      workday: workday.toJSON(),
+    });
+  } catch (err) {
+    // Handle errors
+    console.error(err);
+    res.status(500).json({ error: 'Server error' });
+  }
+};
+/*
+const createWorkDay = async (req, res) => {
     const workday = new WorkDay ({
         name: req.body.name,
         partsUsed: req.body.partsUsed,
@@ -62,6 +87,7 @@ const createWorkDay = async (req, res) => {
     await workday.save()
     res.send(workday);
 };
+*/
 
 // DELETE workDay
 const deleteWorkDay = async(req, res) => {

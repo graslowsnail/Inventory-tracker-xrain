@@ -8,7 +8,7 @@ const schema = mongoose.Schema ({
         required: true
     },
     partsUsed: [{
-        type: ObjectId,
+        type: String,
         ref: 'Part'
     }],
 },
