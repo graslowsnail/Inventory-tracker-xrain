@@ -19,6 +19,7 @@ const NewWorkDay = () => {
         isValid: true
       }
   }, false);
+    const [isSuccess,  setIsSuccess] = useState(false);
 
   const workDaySubmitHandler = async event => {
     event.preventDefault();
@@ -35,9 +36,9 @@ const NewWorkDay = () => {
       })
     });
     const responseData = await response.json();
-
     console.log(responseData);
-
+        setIsSuccess(true);
+        window.location.reload();
   } catch (err) {
     console.log(err.message);
   }
@@ -45,30 +46,29 @@ const NewWorkDay = () => {
 
   return (
     <Card>
+    {isSuccess && <p>Part added successfully!</p> }
     <form className='part-form' onSubmit={workDaySubmitHandler}>
-      <Input
-        id='name'
-        element='input'
-        type='text'
-        label='WorkDay name'
-        validators={[VALIDATOR_REQUIRE() ]}
-        errorText='Please enter a work Day name.'
-        onInput={inputHandler}
-      />
+        <Input
+            id='name'
+            element='input'
+            type='text'
+            label='WorkDay name'
+            validators={[VALIDATOR_REQUIRE() ]}
+            errorText='Please enter a work Day name.'
+            onInput={inputHandler}
+        />
         <Input 
-        id='partsUsed'
-        element='input'
-        type='text'
-        label='parts used'
-        validators={[VALIDATOR_REQUIRE() ]}
-        errorText='Please enter a parts used'
-        onInput={inputHandler}
-      />
-
-    <Button type='submit' disabled={!formState.isValid}>
-      ADD WORKDAY
-    </Button>
-
+            id='partsUsed'
+            element='input'
+            type='text'
+            label='parts used'
+            validators={[VALIDATOR_REQUIRE() ]}
+            errorText='Please enter a parts used'
+            onInput={inputHandler}
+        />
+        <Button type='submit' disabled={!formState.isValid}>
+          ADD WORKDAY
+        </Button>
     </form>
     </Card>
   );
