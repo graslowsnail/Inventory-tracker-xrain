@@ -7,6 +7,7 @@ const PartItem = (props) => {
   const [isDeleting, setIsDeleting] = useState(false);
   const [showConfirmation, setShowConfirmation] = useState(false);
 
+
   const deletePartHandler = () => {
     setIsDeleting(true);
     fetch(`http://localhost:3002/api/parts/${props.id}`, {
