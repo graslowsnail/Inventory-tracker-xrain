@@ -2,7 +2,6 @@ import { useState } from 'react';
 import Card from '../../shared/UIElements/Card';
 import Button from '../../shared/FormElements/Button';
 import './PartItem.css';
-import Modal from '../../shared/UIElements/Modal/index.js';
 
 const PartItem = (props) => {
   const [isDeleting, setIsDeleting] = useState(false);
