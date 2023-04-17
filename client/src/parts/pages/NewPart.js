@@ -88,7 +88,7 @@ const NewPart = () => {
           element='input'
           label='partNumber'
           validators={[VALIDATOR_MINLENGTH(1)]}
-          errorText='please enter partNumber longer then  1 char'
+          errorText='please enter partNumber longer then  1 charcter'
           onInput={inputHandler}
         />
         <Button type='submit' disabled={!formState.isValid}>
