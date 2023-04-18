@@ -5,13 +5,15 @@ import Input from '../../shared/FormElements/Input';
 import Button from '../../shared/FormElements/Button';
 import Card from '../../shared/UIElements/Card';
 import { VALIDATOR_MINLENGTH, VALIDATOR_REQUIRE } from '../../shared/util/validators';
-import './PartForm.css';
 import { useForm } from '../../shared/hooks/form-hook';
 
-const UpdatePart = () => {
-  const partId = useParams().partId;
-  const [isSuccess, setIsSuccess] = useState(false);
+import './PartForm.css';
 
+const UpdatePart = () => {
+  const [isSuccess, setIsSuccess] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
+
+  const partId = useParams().partId;
   const [formState, inputHandler, setFormData] = useForm(
     {
       name: {
@@ -55,6 +57,7 @@ const UpdatePart = () => {
             isValid: true
           }
         }, true);
+          setIsLoading(false);
       } catch (err) {
         console.log(err.message);
       }
@@ -87,6 +90,10 @@ const UpdatePart = () => {
     }
   };
 
+    if(isLoading) {
+            return <Card><p>Loading...</p></Card>
+    }
+
   return (
     <Card>
       {isSuccess && <p>Part Updated successfully!</p>}
@@ -99,6 +106,8 @@ const UpdatePart = () => {
           validators={[VALIDATOR_REQUIRE() ]}
           errorText='Please enter a valid partName.'
           onInput={inputHandler}
+          initialValue={formState.inputs.name.value}
+          initialValid={formState.inputs.name.isValid}
         />
         <Input 
           id='size'
@@ -108,6 +117,8 @@ const UpdatePart = () => {
           validators={[VALIDATOR_REQUIRE() ]}
           errorText='please enter a ammout of parts'
           onInput={inputHandler}
+          initialValue={formState.inputs.size.value}
+          initialValid={formState.inputs.size.isValid}
         />
         <Input
           id='quantity'
@@ -116,6 +127,8 @@ const UpdatePart = () => {
           validators={[VALIDATOR_MINLENGTH(1)]}
           errorText='please enter quantity over 1'
           onInput={inputHandler}
+          initialValue={formState.inputs.quantity.value}
+          initialValid={formState.inputs.quantity.isValid}
         />
         <Input
           id='partNumber'
@@ -124,6 +137,8 @@ const UpdatePart = () => {
           validators={[VALIDATOR_MINLENGTH(1)]}
           errorText='please enter partNumber longer then  1 charcter'
           onInput={inputHandler}
+          initialValue={formState.inputs.partNumber.value}
+          initialValid={formState.inputs.partNumber.isValid}
         />
         <Button type='submit' disabled={!formState.isValid}>
           UPDATE PART
