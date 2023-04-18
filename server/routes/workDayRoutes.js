@@ -7,11 +7,13 @@ const {
     createWorkDay,
     deleteWorkDay,
     updateWorkDay,
-    getWorkDayByDate
+    getWorkDayByDate,
+    getWorkDayById
 } = require('../controllers/WorkDay.js');
 
 // GET all WorkDays
 router.get('/workdays', getWorkDays)
+router.get('/workdays/:id', getWorkDayById);
 
 // GET WorkDay By DATE
 router.get('/workdays/:createdAt', getWorkDayByDate)

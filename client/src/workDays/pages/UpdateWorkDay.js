@@ -10,8 +10,9 @@ import { useForm } from '../../shared/hooks/form-hook';
 import '../../parts/pages/PartForm.css';
 
 const UpdateWorkDay = () => {
-  const workDayId = useParams().workDayId;
   const [isSuccess, setIsSuccess] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const workDayId = useParams().workDayId;
 
   const [formState, inputHandler, setFormData] = useForm(
     {
@@ -40,6 +41,7 @@ const UpdateWorkDay = () => {
             isValid: true
           }
         }, true);
+        setIsLoading(false);
       } catch (err) {
         console.log(err.message);
       }
@@ -70,6 +72,10 @@ const UpdateWorkDay = () => {
     }
   };
 
+  if (isLoading) {
+    return <Card><p>Loading...</p></Card>
+  }
+
   return (
     <Card>
       {isSuccess && <p>Part Updated successfully!</p>}
@@ -78,18 +84,22 @@ const UpdateWorkDay = () => {
           id='name'
           element='input'
           type='text'
-          label='name'
+          label='Name'
           validators={[VALIDATOR_REQUIRE() ]}
           errorText='Please enter a valid partName.'
           onInput={inputHandler}
+          initialValue={formState.inputs.name.value}
+          initialValid={formState.inputs.name.isValid}
         />
         <Input
           id='partsUsed'
           element='input'
-          label='partsUsed'
+          label='PartsUsed'
           validators={[VALIDATOR_MINLENGTH(1)]}
           errorText='please enter parts used this working day'
           onInput={inputHandler}
+          initialValue={formState.inputs.partsUsed.value}
+          initialValid={formState.inputs.partsUsed.isValid}
         />
         <Button type='submit' disabled={!formState.isValid}>
           UPDATE PART

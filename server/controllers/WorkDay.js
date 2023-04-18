@@ -13,6 +13,16 @@ const getWorkDays = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+// GET workDay by ID
+const getWorkDayById = async (req, res) => {
+    try{
+        const workday = await WorkDay.findOne({ _id:req.params.id})
+        res.send(workday);
+    } catch {
+        res.status(404);
+        res.send({ error: 'workday doesnt exist!'});
+    }
+};
 
 
 // GET WorkDay By DATE
@@ -133,6 +143,7 @@ const updateWorkDay = async(req, res) => {
 module.exports = {
     getWorkDays,
     getWorkDayByDate,
+    getWorkDayById,
     createWorkDay,
     deleteWorkDay,
     updateWorkDay

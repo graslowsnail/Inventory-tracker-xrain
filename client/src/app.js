@@ -33,7 +33,7 @@ const App = () => {
             <Route exact path='/new/workday' element={<NewWorkDay/>} />
           </Routes>
           <Routes>
-              <Route exact path='/workdays/:partId' element={<UpdateWorkDay/>} />
+              <Route exact path='/workdays/:workDayId' element={<UpdateWorkDay/>} />
           </Routes>
       </main>
     </Fragment>
