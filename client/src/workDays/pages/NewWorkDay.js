@@ -4,8 +4,9 @@ import Input from '../../shared/FormElements/Input';
 import Button from '../../shared/FormElements/Button';
 import Card from '../../shared/UIElements/Card';
 import { VALIDATOR_REQUIRE } from '../../shared/util/validators';
-import '../../parts/pages/PartForm.css';
 import { useForm } from '../../shared/hooks/form-hook';
+
+import '../../parts/pages/PartForm.css';
 
 const NewWorkDay = () => {
   const [formState, inputHandler] = useForm(

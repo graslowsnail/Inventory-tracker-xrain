@@ -1,6 +1,6 @@
 import React from 'react';
-
 import WorkDayItem from './WorkDayItem.js';
+import moment from 'moment';
 
 import '../../parts/componets/PartList.css';
 
@@ -13,6 +13,9 @@ const WorkDayList = ( props ) => {
       </div>
     );
   }
+    //FORMATTED CREATEDAT DATE
+    const formattedDate = moment(props.date).format('YYYY/DD/MM'); // returns a string in the format of MM/DD/YYYY
+
   return(
 <ul className='part-list'>
       {props.items?.map(part =>(
@@ -20,6 +23,8 @@ const WorkDayList = ( props ) => {
           key={part._id} 
           id={part._id}
           name={part.name}
+          partsUsed={part.partsUsed}
+          date={formattedDate}
         />
       ))}
     </ul>

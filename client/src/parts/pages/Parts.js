@@ -32,7 +32,9 @@ const Part = () => {
     return <div>{error}</div>;
   }
 
-  return <PartList items={parts} />;
+  return (
+      <PartList items={parts} />
+  );
 };
 
 export default Part;

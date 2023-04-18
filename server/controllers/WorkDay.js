@@ -3,9 +3,17 @@ const WorkDay = require('../models/WorkDay.js');
 
 // GET all WorkDays
 const getWorkDays = async (req, res) => {
+  try {
     const workDays = await WorkDay.find();
-    res.send(workDays);
+    if (!workDays) {
+      throw new Error('No workdays found');
+    }
+    res.status(200).json(workDays);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 };
+
 
 // GET WorkDay By DATE
 // added startDate and endDate QUERY

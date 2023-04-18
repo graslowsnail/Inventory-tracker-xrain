@@ -40,8 +40,8 @@ const WorkDayItem = (props) => {
     <li className="part-item">
       <Card className="part-item__content">
         <div className="part-item__info">
-          <h2>{props.name} {props.createdAt}</h2>
-          <h3>DATE:{props.createdAt}</h3>
+          <h2>{props.name}</h2>
+          <h3>DATE: {props.date}</h3>
           <h3>PARTNUMBER: {props.partsUsed}</h3>
         </div>
         <div className="part-item__actions">
