@@ -10,6 +10,8 @@ import { useForm } from '../../shared/hooks/form-hook';
 
 const UpdatePart = () => {
   const partId = useParams().partId;
+  const [isSuccess, setIsSuccess] = useState(false);
+
   const [formState, inputHandler, setFormData] = useForm(
     {
       name: {
@@ -29,8 +31,6 @@ const UpdatePart = () => {
         isValid: false
       }
     }, false);
-
-  const [isSuccess, setIsSuccess] = useState(false);
 
   useEffect(() => {
     const fetchPart = async () => {
