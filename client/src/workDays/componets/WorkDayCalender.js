@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
+import WorkDayItem from './WorkDayItem';
 
 function WorkDayCalender() {
   const [workday, setWorkday] = useState(null);
@@ -36,8 +37,8 @@ function WorkDayCalender() {
       />
       {workday ? (
         <div>
-          <p>Workday found!</p>
-          <p>{JSON.stringify(workday)}</p>
+          <div>Workday found!</div>
+          <WorkDayItem items={workday}/>
         </div>
       ) : (
         <p>No workday found for this date range</p>
