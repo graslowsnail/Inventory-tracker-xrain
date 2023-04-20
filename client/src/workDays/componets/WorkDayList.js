@@ -1,6 +1,7 @@
 import React from 'react';
 import WorkDayItem from './WorkDayItem.js';
 import moment from 'moment';
+import WorkDayCalender from '../componets/WorkDayCalender';
 
 import '../../parts/componets/PartList.css';
 
@@ -17,6 +18,9 @@ const WorkDayList = ( props ) => {
     const formattedDate = moment(props.date).format('YYYY/DD/MM'); // returns a string in the format of MM/DD/YYYY
 
   return(
+      <div>
+      <WorkDayCalender/>
+
 <ul className='part-list'>
       {props.items?.map(part =>(
         < WorkDayItem
@@ -28,6 +32,7 @@ const WorkDayList = ( props ) => {
         />
       ))}
     </ul>
+      </div>
   );
 };
 
