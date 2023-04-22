@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import WorkDayList from '../componets/WorkDayList';
-import WorkDayCalender from '../componets/WorkDayCalender.js';
 
 const WorkDay = () => {
   const [workDays, setWorkDays] = useState([]);
@@ -35,10 +34,7 @@ const WorkDay = () => {
   }
 
   return ( 
-      <div>
-      <WorkDayCalender items={workDays} />
-      <WorkDayList items={workDays} />
-      </div>
+              <WorkDayList items={workDays} />
   );
 };
 

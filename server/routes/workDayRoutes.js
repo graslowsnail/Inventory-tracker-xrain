@@ -13,7 +13,7 @@ const {
 
 // GET all WorkDays
 router.get('/workdays', getWorkDays)
-router.get('/workdays/:id', getWorkDayById);
+router.get('/workday/:id', getWorkDayById);
 
 // GET WorkDay By DATE
 router.get('/workdays/:createdAt', getWorkDayByDate)
