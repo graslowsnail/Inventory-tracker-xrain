@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Card from '../../shared/UIElements/Card';
 import Button from '../../shared/FormElements/Button';
-import moment from 'moment';
+//import moment from 'moment';
 
 import '../../parts/componets/PartItem.css';
 
@@ -50,7 +50,7 @@ const WorkDayDetail = ({ workdayId }) => {
   const cancelDeleteHandler = () => {
     setShowConfirmation(false);
   };
-    const formattedDate = moment(workday.date).format('YYYY/DD/MM'); // returns a string in the format of MM/DD/YYYY
+    //const formattedDate = moment(workday.createdAt).format('YYYY/DD/MM'); // returns a string in the format of MM/DD/YYYY
 
   return (
     <>
@@ -58,11 +58,11 @@ const WorkDayDetail = ({ workdayId }) => {
         <Card className="part-item__content">
           <div className="part-item__info">
             <h2>{workday.name}</h2>
-            <h3>DATE: {formattedDate}</h3>
+            <h3>DATE: {workday.createdAt}</h3>
             <h3>PARTNUMBER: {workday.partsUsed}</h3>
           </div>
           <div className="part-item__actions">
-            <Button to={`/workdays/${workday.id}`}>EDIT</Button>
+            <Button to={`/workdays/${workday._id}`}>EDIT</Button>
             <Button danger onClick={showConfirmationHandler} disabled={isDeleting}>
               {isDeleting ? 'DELETING...' : 'DELETE'}
             </Button>

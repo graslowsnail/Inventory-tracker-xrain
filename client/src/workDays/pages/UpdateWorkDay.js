@@ -29,7 +29,7 @@ const UpdateWorkDay = () => {
   useEffect(() => {
     const fetchWorkDay = async () => {
       try {
-        const response = await fetch(`http://localhost:3002/api/workdays/${workDayId}`);
+        const response = await fetch(`http://localhost:3002/api/workday/${workDayId}`);
         const responseData = await response.json();
         setFormData({
           name: {

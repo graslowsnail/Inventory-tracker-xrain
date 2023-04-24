@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Card from '../../shared/UIElements/Card';
 import Button from '../../shared/FormElements/Button';
+
 import './PartItem.css';
 
 const PartItem = (props) => {
@@ -20,7 +21,7 @@ const PartItem = (props) => {
         if (!response.ok) {
           throw new Error(response.status);
         }
-        setIsDeleting(false);
+        setIsDeleting(false)
         console.log('part deleted');
         window.location.reload();
       })
