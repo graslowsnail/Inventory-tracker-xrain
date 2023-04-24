@@ -52,6 +52,7 @@ const WorkDayDetail = ({ workdayId }) => {
   };
     //const formattedDate = moment(workday.createdAt).format('YYYY/DD/MM'); // returns a string in the format of MM/DD/YYYY
 
+    //const usedPartsArr = [workday.partsUsed];
   return (
     <>
       {workday && (
@@ -59,7 +60,16 @@ const WorkDayDetail = ({ workdayId }) => {
           <div className="part-item__info">
             <h2>{workday.name}</h2>
             <h3>DATE: {workday.createdAt}</h3>
-            <ul>{}</ul>
+          <h3> PARTS USED</h3>
+            <ul>
+            {workday.partsUsed.map(part => (
+                <div key={part._id}>
+                (Part Name: {part.name})
+                -(Size: {part.size})
+                -(quantity: {part.quantity})
+                </div>
+            ))}
+            </ul>
           </div>
           <div className="part-item__actions">
             <Button to={`/workdays/${workday._id}`}>EDIT</Button>
