@@ -1,6 +1,7 @@
 import React from 'react';
 import WorkDayItem from './WorkDayItem.js';
 import moment from 'moment';
+import Button from '../../shared/FormElements/Button';
 
 import '../../parts/componets/PartList.css';
 
@@ -8,8 +9,9 @@ const WorkDayList = ( props ) => {
   if (props.items.length === 0) {
     return (
       <div className='part-list center' >
-        <h2>No Parts found. maybe create one!</h2>
-        <button to='/parts/new'>make part</button>
+        <h2>No WorkDay found. maybe create one!</h2>
+        ----
+        <Button to='/new/workday'>Add WorkDay</Button>
       </div>
     );
   }
