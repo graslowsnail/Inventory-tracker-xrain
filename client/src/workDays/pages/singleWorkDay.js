@@ -35,7 +35,7 @@ const WorkDayDetail = ({ workdayId }) => {
 
         setIsDeleting(false);
         console.log('Workday Deleted');
-        window.location.reload();
+        window.location.href = '/';
       })
       .catch(error => {
         setIsDeleting(false);
