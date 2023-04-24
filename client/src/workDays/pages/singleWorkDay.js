@@ -22,7 +22,7 @@ const WorkDayDetail = ({ workdayId }) => {
 
   const deleteWorkdayHandler = () => {
     setIsDeleting(true);
-    fetch(`http://localhost:3002/api/workdays/${workday.id}`,{
+    fetch(`http://localhost:3002/api/workdays/${workday._id}`,{
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'

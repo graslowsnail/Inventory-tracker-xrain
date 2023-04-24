@@ -14,7 +14,7 @@ const WorkDayList = ( props ) => {
     );
   }
     //FORMATTED CREATEDAT DATE
-    const formattedDate = moment(props.date).format('YYYY/DD/MM'); // returns a string in the format of MM/DD/YYYY
+    const formattedDate = moment(props.date).format('MM/DD/YYYY'); // returns a string in the format of MM/DD/YYYY
 
   return(
 <ul className='part-list'>
