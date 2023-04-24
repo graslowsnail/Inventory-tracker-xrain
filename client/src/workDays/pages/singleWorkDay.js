@@ -59,7 +59,7 @@ const WorkDayDetail = ({ workdayId }) => {
           <div className="part-item__info">
             <h2>{workday.name}</h2>
             <h3>DATE: {workday.createdAt}</h3>
-            <h3>PARTNUMBER: {workday.partsUsed}</h3>
+            <ul>{}</ul>
           </div>
           <div className="part-item__actions">
             <Button to={`/workdays/${workday._id}`}>EDIT</Button>

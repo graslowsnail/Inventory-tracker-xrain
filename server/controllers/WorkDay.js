@@ -16,7 +16,9 @@ const getWorkDays = async (req, res) => {
 // GET workDay by ID
 const getWorkDayById = async (req, res) => {
     try{
-        const workday = await WorkDay.findOne({ _id:req.params.id})
+        const workday = await WorkDay
+            .findOne({ _id:req.params.id})
+            .populate('partsUsed')
         res.send(workday);
     } catch {
         res.status(404);
