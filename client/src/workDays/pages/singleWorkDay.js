@@ -2,11 +2,11 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Card from '../../shared/UIElements/Card';
 import Button from '../../shared/FormElements/Button';
-//import moment from 'moment';
+import moment from 'moment';
 
 import '../../parts/componets/PartItem.css';
 //import UpdatePart from '../../parts/pages/UpdatePart';
-import AddPartForm from '../componets/AddPartForm';
+import AddPartForm from '../componets/AddPartForm.js';
 
 
 const WorkDayDetail = () => {
@@ -81,20 +81,19 @@ const WorkDayDetail = () => {
         );
     };
 
-    //const formattedDate = moment(workday.createdAt).format('YYYY/DD/MM'); // returns a string in the format of MM/DD/YYYY
+    const formattedDate = moment(workDay.createdAt).format('YYYY/DD/MM'); // returns a string in the format of MM/DD/YYYY
 
-    //const usedPartsArr = [workday.partsUsed];
   return (
     <>
       {workDay && (
         <Card className="part-item__content">
           <div className="part-item__info">
-            <h1>{workDay.name} {workDay.date}</h1>
+            <h1>{workDay.name} {formattedDate}</h1>
           <Card>
           <h3>scan and add part!</h3>
         <AddPartForm workDay={workDay} workDayId={workDayId}/>
 
-          <h3> PART USED ON {workDay.date}</h3>
+          <h3> PART USED ON {formattedDate}</h3>
             <ul>
             {workDay.partsUsed.map(part => (
                 <div key={part._id}>
