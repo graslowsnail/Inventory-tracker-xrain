@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-
 import Input from '../../shared/FormElements/Input';
 import Button from '../../shared/FormElements/Button';
 import Card from '../../shared/UIElements/Card';
@@ -22,16 +21,13 @@ const UpdateWorkDay = () => {
       }
     }, false);
 
+    //useEffect hook fetches the imformation of the workDay on the page....
   useEffect(() => {
     const fetchWorkDay = async () => {
       try {
         const response = await fetch(`http://localhost:3002/api/workday/${workDayId}`);
         const responseData = await response.json();
         setFormData({
-          name: {
-            value: responseData.name,
-            isValid: true
-          },
           partsUsed: {
             value: responseData.partsUsed,
             isValid: true
@@ -44,7 +40,32 @@ const UpdateWorkDay = () => {
     };
     fetchWorkDay();
   }, [workDayId, setFormData]);
+    //
 
+    const addPartSubmitHandler = async event => {
+        event.preventDefault();
+        try{
+            const response = await fetch(`http://localhost:3002/api/parts/${workDayId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    partsUsed: formState.inputs.partsUsed.value
+                })
+            });
+            const responseData = await response.json();
+            console.log(responseData);
+            setIsSuccess(true);
+            // may want to redirect to another page (idk) i dont think so
+            window.location.reload();
+        } catch (err) {
+            console.log(err.message);
+        }
+    };
+
+// 
+        /*
   const workDaySubmitHandler = async event => {
     event.preventDefault();
     try {
@@ -71,11 +92,13 @@ const UpdateWorkDay = () => {
   if (isLoading) {
     return <Card><p>Loading...</p></Card>
   }
+    */
 
+// workDaySubmitHandler was at onSubmit for the form 
   return (
       <div>
       {isSuccess && <p>Part Updated successfully!</p>}
-      <form className='part-form' onSubmit={workDaySubmitHandler}>
+      <form className='part-form' onSubmit={addPartSubmitHandler}>
       {/*
         <Input
           id='name'
@@ -92,11 +115,11 @@ const UpdateWorkDay = () => {
         <Input
           id='partsUsed'
           element='input'
-          label='PartsUsed'
+          label='SCAN BARCODE'
           validators={[VALIDATOR_REQUIRE()]}
-          errorText='please enter parts used this working day'
+          errorText='please enter a part used this working day'
           onInput={inputHandler}
-          initialValue={'please enter a part'}
+          initialValue={''}
           initialValid={false}
         />
         <Button type='submit' disabled={!formState.isValid}>

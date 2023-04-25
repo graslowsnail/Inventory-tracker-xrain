@@ -8,7 +8,8 @@ const {
     deleteWorkDay,
     updateWorkDay,
     getWorkDayByDate,
-    getWorkDayById
+    getWorkDayById,
+    addSinglePartToWorkDay
 } = require('../controllers/WorkDay.js');
 
 // GET all WorkDays
@@ -26,5 +27,8 @@ router.delete('/workdays/:id', deleteWorkDay)
 
 // UPDATE a workDay
 router.put('/workdays/:id', updateWorkDay)
+
+// ADD single part to a workday 
+router.put('/workdays/:id', addSinglePartToWorkDay)
 
 module.exports = router;

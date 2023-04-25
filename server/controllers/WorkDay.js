@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const WorkDay = require('../models/WorkDay.js');
+const Part = require('../models/Part.js');
 
 // GET all WorkDays
 const getWorkDays = async (req, res) => {
@@ -77,13 +78,12 @@ const getWorkDayByDate = async (req, res) => {
 const createWorkDay = async (req, res) => {
   try {
     // Validate inputs
-    if (!req.body.name || !req.body.partsUsed) {
-      return res.status(400).json({ error: 'Name and parts used are required' });
+    if (!req.body.name) {
+      return res.status(400).json({ error: 'WORK DAY name required' });
     }
     // Create new workday object
     const workday = new WorkDay({
-      name: req.body.name,
-      partsUsed: req.body.partsUsed,
+      name: req.body.name
     });
     // Save workday to database
     await workday.save();
@@ -120,6 +120,28 @@ const deleteWorkDay = async(req, res) => {
     }
 };
 
+// ADD  a single part to a workDay 
+const addSinglePartToWorkDay = async(req, res) => {
+    try {
+        const barCodeId = await Part.findOne({ barCodeId: part.barCodeId }) 
+
+        if(!barCodeId) {
+            return res.status(404).send({ error: 'a part with that barCodeId was not found' })
+        }
+        //gets parts objectId 
+        part.id = req.body._id
+
+        //  to add part to used part arr
+        workday.partsUsed = arr.push(part.id);
+
+        await WorkDay.findOneAndUpdate({ _id: workday._id }, workday.partsUsed, {new: true})
+        
+        res.send(workday);
+    } catch (err) {
+        res.status(500).send({ error: err.message })
+    }
+};
+
 // UPDATE a workDay
 const updateWorkDay = async(req, res) => {
     try {
@@ -148,5 +170,6 @@ module.exports = {
     getWorkDayById,
     createWorkDay,
     deleteWorkDay,
-    updateWorkDay
+    updateWorkDay,
+    addSinglePartToWorkDay
 };

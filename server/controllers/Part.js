@@ -7,7 +7,27 @@ const getParts = async (req, res) => {
     const parts = await Part.find();
     res.send(parts);
 };
+/*
+// GET BY partNumber
+const getPartByBarcodeId = async (req, res) => {
+    try {
+        const barCodeId = req.params.barCodeId;
+        const part = await Part.findOne({ barCodeId });
 
+        if (!part) {
+            res.status(404);
+            res.send({ error: `Part with partNumber ${barCodeId} not found` });
+            return;
+        }
+        res.send(part);
+    } catch (error) {
+        console.error(error);
+        res.status(500);
+        res.send({ error: 'Something went wrong while getting the part' });
+    }
+};
+*/
+//
 //GET a single part by id
 const getPartById = async (req, res) => {
     try{

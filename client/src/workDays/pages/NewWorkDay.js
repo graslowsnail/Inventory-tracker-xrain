@@ -14,10 +14,6 @@ const NewWorkDay = () => {
       name: {
         value: '',
         isValid: false
-      },
-      partsUsed: {
-        value: '',
-        isValid: true
       }
   }, false);
     const [isSuccess,  setIsSuccess] = useState(false);
@@ -32,14 +28,16 @@ const NewWorkDay = () => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        name: formState.inputs.name.value,
-        partsUsed: formState.inputs.partsUsed.value
+        name: formState.inputs.name.value
       })
     });
+
     const responseData = await response.json();
     console.log(responseData);
+    const workDayId = (responseData.workday._id);
+        console.log(workDayId);
         setIsSuccess(true);
-        window.location.reload();
+        window.location.href = `/workday/${workDayId}`;
   } catch (err) {
     console.log(err.message);
   }
@@ -58,6 +56,8 @@ const NewWorkDay = () => {
             errorText='Please enter a work Day name.'
             onInput={inputHandler}
         />
+
+      {/*
         <Input 
             id='partsUsed'
             element='input'
@@ -67,6 +67,7 @@ const NewWorkDay = () => {
             errorText='Please enter a parts used'
             onInput={inputHandler}
         />
+          */}
         <Button type='submit' disabled={!formState.isValid}>
           ADD WORKDAY
         </Button>
