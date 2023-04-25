@@ -46,7 +46,7 @@ const PartItem = (props) => {
           <h2>{props.name}</h2>
           <h3>PART SIZE: {props.size}</h3>
           <h3>QUANTITY: {props.quantity}</h3>
-          <h3>PARTNUM:{props.partNumber}</h3>
+          <h3>BARCODE ID: {props.barCodeId}</h3>
           <h3>OBJ ID: {props.id}</h3>
         </div>
         <div className="part-item__actions">

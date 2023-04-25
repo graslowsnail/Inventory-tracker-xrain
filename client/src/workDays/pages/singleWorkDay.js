@@ -6,7 +6,7 @@ import Button from '../../shared/FormElements/Button';
 
 import '../../parts/componets/PartItem.css';
 //import UpdatePart from '../../parts/pages/UpdatePart';
-import UpdateWorkDay from './UpdateWorkDay';
+import AddPartForm from '../componets/AddPartForm';
 
 
 const WorkDayDetail = () => {
@@ -92,7 +92,7 @@ const WorkDayDetail = () => {
             <h1>{workDay.name} {workDay.date}</h1>
           <Card>
           <h3>scan and add part!</h3>
-        <UpdateWorkDay workDay={workDay} workDayId={workDayId}/>
+        <AddPartForm workDay={workDay} workDayId={workDayId}/>
 
           <h3> PART USED ON {workDay.date}</h3>
             <ul>

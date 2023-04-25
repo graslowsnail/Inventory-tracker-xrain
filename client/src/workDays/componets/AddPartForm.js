@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 import Input from '../../shared/FormElements/Input';
 import Button from '../../shared/FormElements/Button';
 import Card from '../../shared/UIElements/Card';
@@ -8,18 +7,17 @@ import { useForm } from '../../shared/hooks/form-hook';
 
 import '../../parts/pages/PartForm.css';
 
-const UpdateWorkDay = ({ workDay, workDayId }) => {
+const AddPartForm = ({ workDay, workDayId }) => {
   const [isSuccess, setIsSuccess] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
-  const usedPartsArr = workDay.partsUsed;
-
-  const [formState, inputHandler] = useForm(
+    const [formState, inputHandler] = useForm(
     {
       barCodeId: {
         value: '',
         isValid: false
       }
     }, false);
+    
 
     const addPartSubmitHandler = async event => {
         event.preventDefault();
@@ -40,7 +38,7 @@ const UpdateWorkDay = ({ workDay, workDayId }) => {
             setIsSuccess(true);
             setIsLoading(false);
             // may want to redirect to another page (idk) i dont think so
-            //window.location.reload();
+            window.location.reload();
         } catch (err) {
             console.log(err.message);
             setIsLoading(false);
@@ -84,6 +82,6 @@ const UpdateWorkDay = ({ workDay, workDayId }) => {
   );
 };
 
-export default UpdateWorkDay;
+export default AddPartForm;
 
 

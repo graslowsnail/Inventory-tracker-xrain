@@ -24,7 +24,7 @@ const PartList = props => {
           name={part.name}
           size={part.size}
           quantity={part.quantity}
-          partNumber={part.partNumber}
+          barCodeId={part.barCodeId}
         />
       ))}
     </ul>
