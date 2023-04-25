@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import Input from '../../shared/FormElements/Input';
 import Button from '../../shared/FormElements/Button';
 import Card from '../../shared/UIElements/Card';
-import { VALIDATOR_MINLENGTH, VALIDATOR_REQUIRE } from '../../shared/util/validators';
+import { VALIDATOR_REQUIRE } from '../../shared/util/validators';
 import { useForm } from '../../shared/hooks/form-hook';
 
 import '../../parts/pages/PartForm.css';
@@ -16,10 +16,6 @@ const UpdateWorkDay = () => {
 
   const [formState, inputHandler, setFormData] = useForm(
     {
-      name: {
-        value: '',
-        isValid: false
-      },
       partsUsed: {
         value: '',
         isValid: false
@@ -77,9 +73,10 @@ const UpdateWorkDay = () => {
   }
 
   return (
-    <Card>
+      <div>
       {isSuccess && <p>Part Updated successfully!</p>}
       <form className='part-form' onSubmit={workDaySubmitHandler}>
+      {/*
         <Input
           id='name'
           element='input'
@@ -91,21 +88,22 @@ const UpdateWorkDay = () => {
           initialValue={formState.inputs.name.value}
           initialValid={formState.inputs.name.isValid}
         />
+          */}
         <Input
           id='partsUsed'
           element='input'
           label='PartsUsed'
-          validators={[VALIDATOR_MINLENGTH(1)]}
+          validators={[VALIDATOR_REQUIRE()]}
           errorText='please enter parts used this working day'
           onInput={inputHandler}
-          initialValue={formState.inputs.partsUsed.value}
-          initialValid={formState.inputs.partsUsed.isValid}
+          initialValue={'please enter a part'}
+          initialValid={false}
         />
         <Button type='submit' disabled={!formState.isValid}>
-          UPDATE PART
+          ADD PART
         </Button>
       </form>
-    </Card>
+      </div>
   );
 };
 

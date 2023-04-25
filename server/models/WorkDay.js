@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const { ObjectId } = mongoose.Schema;
 const Part =  require('../models/Part.js');
 
+
 const schema = mongoose.Schema ({
     name: {
         type: String,
@@ -9,7 +10,7 @@ const schema = mongoose.Schema ({
     },
     partsUsed: [{
         type: ObjectId,
-        ref: 'Part'
+        ref: 'Part',
     }],
 },
     { timestamps: true }

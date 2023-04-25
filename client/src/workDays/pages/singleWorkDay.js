@@ -2,9 +2,11 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Card from '../../shared/UIElements/Card';
 import Button from '../../shared/FormElements/Button';
-//import moment from 'moment';
+import moment from 'moment';
 
 import '../../parts/componets/PartItem.css';
+//import UpdatePart from '../../parts/pages/UpdatePart';
+import UpdateWorkDay from './UpdateWorkDay';
 
 
 const WorkDayDetail = ({ workdayId }) => {
@@ -58,9 +60,12 @@ const WorkDayDetail = ({ workdayId }) => {
       {workday && (
         <Card className="part-item__content">
           <div className="part-item__info">
-            <h2>{workday.name}</h2>
-            <h3>DATE: {workday.createdAt}</h3>
-          <h3> PARTS USED</h3>
+            <h1>{workday.name} {workday.date}</h1>
+          <Card>
+          <h3>scan and add part!</h3>
+          <UpdateWorkDay/>
+
+          <h3> PART USED ON {workday.date}</h3>
             <ul>
             {workday.partsUsed.map(part => (
                 <div key={part._id}>
@@ -70,9 +75,9 @@ const WorkDayDetail = ({ workdayId }) => {
                 </div>
             ))}
             </ul>
+          </Card>
           </div>
           <div className="part-item__actions">
-            <Button to={`/workdays/${workday._id}`}>EDIT</Button>
             <Button danger onClick={showConfirmationHandler} disabled={isDeleting}>
               {isDeleting ? 'DELETING...' : 'DELETE'}
             </Button>
