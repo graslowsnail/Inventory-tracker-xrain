@@ -14,6 +14,7 @@ const getWorkDays = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
 // GET workDay by ID
 const getWorkDayById = async (req, res) => {
     try{
@@ -123,46 +124,34 @@ const deleteWorkDay = async(req, res) => {
 // ADD  a single part to a workDay 
 const addSinglePartToWorkDay = async(req, res) => {
     try {
-        const barCodeId = await Part.findOne({ barCodeId: part.barCodeId }) 
+        const barCodeId = req.body.barCodeId;
+        console.log(req.body.barCodeId + '   PART BARCODE FROM FRONT END');
+
+        const part = await Part.findOne({ barCodeId: barCodeId }) 
+        console.log(part);
+
+        const partId = part._id;
+        console.log(partId);
 
         if(!barCodeId) {
             return res.status(404).send({ error: 'a part with that barCodeId was not found' })
         }
-        //gets parts objectId 
-        part.id = req.body._id
+        const workday = await WorkDay.findOne({_id: req.params.id})
+        const partsUsed = workday.partsUsed;
+        partsUsed.push([partId]);
 
-        //  to add part to used part arr
-        workday.partsUsed = arr.push(part.id);
-
-        await WorkDay.findOneAndUpdate({ _id: workday._id }, workday.partsUsed, {new: true})
+        await WorkDay.findOneAndUpdate({ _id: req.params.id }, { partsUsed: partsUsed }, {new: true})
+        
+        //workday.partsUsed = arr.push(partId);
+        await workday.save();
         
         res.send(workday);
+        console.log(workday);
     } catch (err) {
+        console.log('########');
         res.status(500).send({ error: err.message })
     }
 };
-
-// UPDATE a workDay
-const updateWorkDay = async(req, res) => {
-    try {
-        const workday = await WorkDay.findOne({ _id: req.params.id})
-
-        if (!workday) {
-            return res.status(404).send({ error: 'Work Day not found'})
-        }
-
-        workday.name = req.body.name
-        workday.partsUsed = req.body.partsUsed
-
-        await WorkDay.findOneAndUpdate({ _id: req.params.id }, workday, { new: true })
-
-
-        res.send(workday)
-    } catch (err){
-        res.status(500).send({ error: err.message })
-    }
-};
-
 
 module.exports = {
     getWorkDays,
@@ -170,6 +159,5 @@ module.exports = {
     getWorkDayById,
     createWorkDay,
     deleteWorkDay,
-    updateWorkDay,
     addSinglePartToWorkDay
 };

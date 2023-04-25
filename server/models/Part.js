@@ -13,7 +13,7 @@ const schema = mongoose.Schema ({
         type: Number,
         required: false
     },
-    partNumber: {
+    barCodeId: {
         type: String,
         required: true
     }

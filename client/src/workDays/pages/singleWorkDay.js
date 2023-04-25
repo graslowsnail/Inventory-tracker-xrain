@@ -2,29 +2,42 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Card from '../../shared/UIElements/Card';
 import Button from '../../shared/FormElements/Button';
-import moment from 'moment';
+//import moment from 'moment';
 
 import '../../parts/componets/PartItem.css';
 //import UpdatePart from '../../parts/pages/UpdatePart';
 import UpdateWorkDay from './UpdateWorkDay';
 
 
-const WorkDayDetail = ({ workdayId }) => {
+const WorkDayDetail = () => {
     const { workDayId } = useParams();
-  const [workday, setWorkday] = useState(null);
+  const [workDay, setWorkday] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
   const [showConfirmation, setShowConfirmation] = useState(false);
 
   useEffect(() => {
+      setIsLoading(true);
     fetch(`http://localhost:3002/api/workday/${workDayId}`)
-      .then(response => response.json())
-      .then(data => setWorkday(data))
-      .catch(error => console.error(`Error fetching workday: ${error.message}`));
+      .then(response => {
+          if(!response.ok) {
+              throw new Error('failed to fetch work day')
+          }
+          return response.json();
+      })
+      .then(data =>{
+          setWorkday(data); 
+          setIsLoading(false)
+  })
+      .catch(error => {
+          console.error(`Error fetching workday: ${error.message}`)
+          setIsLoading(false);
+      });
   }, [workDayId]);
 
   const deleteWorkdayHandler = () => {
     setIsDeleting(true);
-    fetch(`http://localhost:3002/api/workdays/${workday._id}`,{
+    fetch(`http://localhost:3002/api/workdays/${workDayId}`,{
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
@@ -52,22 +65,38 @@ const WorkDayDetail = ({ workdayId }) => {
   const cancelDeleteHandler = () => {
     setShowConfirmation(false);
   };
+
+    if(!workDay) {
+        return (
+          <div className='part-list center' > <h2>No WorkDay found. maybe create one!</h2>
+            ----
+            <Button to='/new/workday'>Add WorkDay</Button>
+          </div>
+        );
+    };
+
+    if(isLoading) {
+        return (
+            <Card><p>Loading...</p></Card>
+        );
+    };
+
     //const formattedDate = moment(workday.createdAt).format('YYYY/DD/MM'); // returns a string in the format of MM/DD/YYYY
 
     //const usedPartsArr = [workday.partsUsed];
   return (
     <>
-      {workday && (
+      {workDay && (
         <Card className="part-item__content">
           <div className="part-item__info">
-            <h1>{workday.name} {workday.date}</h1>
+            <h1>{workDay.name} {workDay.date}</h1>
           <Card>
           <h3>scan and add part!</h3>
-          <UpdateWorkDay/>
+        <UpdateWorkDay workDay={workDay} workDayId={workDayId}/>
 
-          <h3> PART USED ON {workday.date}</h3>
+          <h3> PART USED ON {workDay.date}</h3>
             <ul>
-            {workday.partsUsed.map(part => (
+            {workDay.partsUsed.map(part => (
                 <div key={part._id}>
                 (Part Name: {part.name})
                 -(Size: {part.size})

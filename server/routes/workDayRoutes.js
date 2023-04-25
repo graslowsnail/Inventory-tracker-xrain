@@ -14,6 +14,8 @@ const {
 
 // GET all WorkDays
 router.get('/workdays', getWorkDays)
+
+// GET one by id
 router.get('/workday/:id', getWorkDayById);
 
 // GET WorkDay By DATE
@@ -26,7 +28,7 @@ router.post('/workdays', createWorkDay)
 router.delete('/workdays/:id', deleteWorkDay)
 
 // UPDATE a workDay
-router.put('/workdays/:id', updateWorkDay)
+//router.put('/workdays/:id', updateWorkDay)
 
 // ADD single part to a workday 
 router.put('/workdays/:id', addSinglePartToWorkDay)

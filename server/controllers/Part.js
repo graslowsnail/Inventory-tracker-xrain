@@ -7,27 +7,7 @@ const getParts = async (req, res) => {
     const parts = await Part.find();
     res.send(parts);
 };
-/*
-// GET BY partNumber
-const getPartByBarcodeId = async (req, res) => {
-    try {
-        const barCodeId = req.params.barCodeId;
-        const part = await Part.findOne({ barCodeId });
 
-        if (!part) {
-            res.status(404);
-            res.send({ error: `Part with partNumber ${barCodeId} not found` });
-            return;
-        }
-        res.send(part);
-    } catch (error) {
-        console.error(error);
-        res.status(500);
-        res.send({ error: 'Something went wrong while getting the part' });
-    }
-};
-*/
-//
 //GET a single part by id
 const getPartById = async (req, res) => {
     try{
@@ -45,7 +25,7 @@ const createPart = async(req, res) => {
         name: req.body.name,
         size: req.body.size,
         quantity: req.body.quantity,
-        partNumber: req.body.partNumber,
+        barCodeId: req.body.partNumber,
     })
     await part.save()
     res.send(part);
@@ -75,7 +55,7 @@ const updatePart = async(req, res) => {
         part.name = req.body.name
         part.size = req.body.size
         part.quantity = req.body.quantity
-        part.partNumber = req.body.partNumber
+        part.barCodeId = req.body.partNumber
 
         await Part.findOneAndUpdate({ _id: req.params.id }, part, { new: true })
 
