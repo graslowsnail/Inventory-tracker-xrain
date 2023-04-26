@@ -1,11 +1,9 @@
 import React from 'react';
-
 import PartItem from './PartItem';
 
 import './PartList.css';
 
 const PartList = props => {
-    console.log('Part component rendered');
   if (props.items.length === 0) {
     return (
       <div className='part-list center' >

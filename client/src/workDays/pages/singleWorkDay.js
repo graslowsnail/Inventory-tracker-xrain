@@ -2,19 +2,18 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Card from '../../shared/UIElements/Card';
 import Button from '../../shared/FormElements/Button';
-import moment from 'moment';
-
-import '../../parts/componets/PartItem.css';
-//import UpdatePart from '../../parts/pages/UpdatePart';
 import AddPartForm from '../componets/AddPartForm.js';
+
+import moment from 'moment';
+import '../../parts/componets/PartItem.css';
 
 
 const WorkDayDetail = () => {
     const { workDayId } = useParams();
-  const [workDay, setWorkday] = useState(null);
+    const [workDay, setWorkday] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [showConfirmation, setShowConfirmation] = useState(false);
+    const [isDeleting, setIsDeleting] = useState(false);
+    const [showConfirmation, setShowConfirmation] = useState(false);
 
   useEffect(() => {
       setIsLoading(true);

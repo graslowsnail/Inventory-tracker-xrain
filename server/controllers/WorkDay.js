@@ -56,25 +56,6 @@ const getWorkDayByDate = async (req, res) => {
     }
 };
 
-/*
-    * CONTROLLER WITHOUT STARTDATE QURY
-const getWorkDayByDate = async (req, res) => {
-    try {
-        const workday = await WorkDay.find({
-            createdAt: {
-                $gte: new Date(2023, 2, 29),
-                $lt: new Date(2023, 2, 30)
-            }
-        }).populate('partsUsed')
-
-            res.send(workday);
-    } catch {
-        res.status(404);
-        res.send({ error: 'Part doesnt exist'});
-    }
-};
-*/
-
 // CREATE workday
 const createWorkDay = async (req, res) => {
   try {
@@ -128,10 +109,8 @@ const addSinglePartToWorkDay = async(req, res) => {
         console.log(req.body.barCodeId + '   PART BARCODE FROM FRONT END');
 
         const part = await Part.findOne({ barCodeId: barCodeId }) 
-        console.log(part);
 
         const partId = part._id;
-        console.log(partId);
 
         if(!barCodeId) {
             return res.status(404).send({ error: 'a part with that barCodeId was not found' })
@@ -146,7 +125,6 @@ const addSinglePartToWorkDay = async(req, res) => {
         await workday.save();
         
         res.send(workday);
-        console.log(workday);
     } catch (err) {
         console.log('########');
         res.status(500).send({ error: err.message })

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+//import React, { Fragment } from 'react';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 //might need Navigate look into that 
 
@@ -14,32 +14,19 @@ const App = () => {
 
   return ( 
     <Router>
-    <Fragment>
-      <MainNavigation />
+          <MainNavigation />
       <main>
           <Routes>
-            <Route exact path='/' element={<WorkDay/>} />
-          </Routes>
-          <Routes>
-            <Route exact path='/parts' element={<Part/>} />
-          </Routes>
-          <Routes>
-            <Route exact path='/new/parts' element={<NewPart/>} />
-          </Routes>
-          <Routes>
-              <Route exact path='/parts/:partId' element={<UpdatePart/>} />
-          </Routes>
-          <Routes>
-            <Route exact path='/new/workday' element={<NewWorkDay/>} />
-          </Routes>
-          <Routes>
+              <Route path="/" element={<WorkDay/>}/>
+              <Route exact path='/new/workday' element={<NewWorkDay/>} />
               <Route exact path='/workday/:workDayId' element={<SingleWorkDay/>} />
-          </Routes>
+              <Route path="/parts" element={<Part/>}/>
+              <Route exact path='/new/parts' element={<NewPart/>} />
+              <Route exact path='/parts/:partId' element={<UpdatePart/>} />
+        </Routes>
       </main>
-    </Fragment>
     </Router>
   );
 };
 
 export default App;
-
