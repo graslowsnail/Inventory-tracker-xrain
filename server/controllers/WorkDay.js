@@ -106,17 +106,15 @@ const addSinglePartToWorkDay = async(req, res) => {
             return res.status(404).send({ error: 'a part with that barCodeId was not found' })
         }
         const workday = await WorkDay.findOne({_id: req.params.id})
+        //const workday = await WorkDay.findOneAndUpdate({ _id: req.params.id }, { partsUsed: partsUsed }, {new: true})
         const partsUsed = workday.partsUsed;
         partsUsed.push([partId]);
 
-        await WorkDay.findOneAndUpdate({ _id: req.params.id }, { partsUsed: partsUsed }, {new: true})
-        
-        //workday.partsUsed = arr.push(partId);
         await workday.save();
-        
         res.send(workday);
     } catch (err) {
         console.log('########');
+        console.log( err.message)
         res.status(500).send({ error: err.message })
     }
 };
