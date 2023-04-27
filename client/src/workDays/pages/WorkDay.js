@@ -11,9 +11,9 @@ const WorkDay = () => {
     setIsLoading(true);
     fetch('http://localhost:3002/api/workdays')
       .then(response => {
-        if (!response.ok) {
-          throw new Error('Failed to fetch workdays');
-        }
+            if (!response.ok) {
+              throw new Error('Failed to fetch workdays');
+            }
         return response.json();
       })
       .then(data => {
@@ -29,11 +29,10 @@ const WorkDay = () => {
   if (isLoading) {
     return <div>Loading...</div>;
   }
-
   if (error) {
     return <div>{error}</div>;
   }
-      if (workDays?.length === 0) {
+  if (workDays?.length === 0) {
     return (
       <div className='part-list center' >
         <h2>No WorkDay found. maybe create one!</h2>
@@ -42,10 +41,8 @@ const WorkDay = () => {
       </div>
     );
   }
-
-
   return ( 
-              <WorkDayList items={workDays} />
+    <WorkDayList items={workDays} />
   );
 };
 
