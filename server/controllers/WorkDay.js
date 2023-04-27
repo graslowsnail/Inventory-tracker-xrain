@@ -80,16 +80,6 @@ const createWorkDay = async (req, res) => {
     res.status(500).json({ error: 'Server error' });
   }
 };
-/*
-const createWorkDay = async (req, res) => {
-    const workday = new WorkDay ({
-        name: req.body.name,
-        partsUsed: req.body.partsUsed,
-    })
-    await workday.save()
-    res.send(workday);
-};
-*/
 
 // DELETE workDay
 const deleteWorkDay = async(req, res) => {
