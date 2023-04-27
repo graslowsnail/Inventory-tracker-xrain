@@ -5,15 +5,15 @@ import { Link } from 'react-router-dom';
 
 import '../../parts/componets/PartItem.css';
 
-const WorkDayItem = (props) => {
+const WorkDayItem = (workDay) => {
 
   return (
     <li className="part-item">
       <Card className="part-item__content">
-      <Link to={`/workday/${props.id}`} className="part-item__content">
+      <Link to={`/workday/${workDay.id}`} className="part-item__content">
         <div className="part-item__info">
-              <h2>{props.name}</h2>
-              <h3>DATE: {props.date}</h3>
+              <h2>{workDay.name}</h2>
+              <h3>DATE: {workDay.date}</h3>
             </div>
       </Link>
       </Card>

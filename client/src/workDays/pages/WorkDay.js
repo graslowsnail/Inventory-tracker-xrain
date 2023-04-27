@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import WorkDayList from '../componets/WorkDayList';
+import Button from '../../shared/FormElements/Button';
 
 const WorkDay = () => {
   const [workDays, setWorkDays] = useState([]);
@@ -32,6 +33,16 @@ const WorkDay = () => {
   if (error) {
     return <div>{error}</div>;
   }
+      if (workDays?.length === 0) {
+    return (
+      <div className='part-list center' >
+        <h2>No WorkDay found. maybe create one!</h2>
+        ----
+        <Button to='/new/workday'>Add WorkDay</Button>
+      </div>
+    );
+  }
+
 
   return ( 
               <WorkDayList items={workDays} />
