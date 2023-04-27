@@ -4,14 +4,14 @@ import Button from '../../shared/FormElements/Button';
 
 import './PartItem.css';
 
-const PartItem = (props) => {
+const PartItem = (part) => {
   const [isDeleting, setIsDeleting] = useState(false);
   const [showConfirmation, setShowConfirmation] = useState(false);
 
 
   const deletePartHandler = () => {
     setIsDeleting(true);
-    fetch(`http://localhost:3002/api/parts/${props.id}`, {
+    fetch(`http://localhost:3002/api/parts/${part.id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
@@ -43,14 +43,15 @@ const PartItem = (props) => {
     <li className="part-item">
       <Card className="part-item__content">
         <div className="part-item__info">
-          <h2>{props.name}</h2>
-          <h3>PART SIZE: {props.size}</h3>
-          <h3>QUANTITY: {props.quantity}</h3>
-          <h3>BARCODE ID: {props.barCodeId}</h3>
-          <h3>OBJ ID: {props.id}</h3>
+          <h2>{part.name}</h2>
+          <h3>PART SIZE: {part.size}</h3>
+          <h3>Box quantity: {part.boxQuantity}</h3>
+          <h3>CURRENT STOCK: {part.currentStock}</h3>
+          <h3>Initial Stock: {part.initialStock}</h3>
+          <h3>BARCODE ID: {part.barCodeId}</h3>
         </div>
         <div className="part-item__actions">
-          <Button to={`/parts/${props.id}`}>EDIT</Button>
+          <Button to={`/parts/${part.id}`}>EDIT</Button>
           <Button danger onClick={showConfirmationHandler} disabled={isDeleting}>
             {isDeleting ? 'DELETING...' : 'DELETE'}
           </Button>

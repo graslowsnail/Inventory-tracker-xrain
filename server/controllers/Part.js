@@ -32,7 +32,9 @@ const createPart = async(req, res) => {
     const part = new Part ({
         name: req.body.name,
         size: req.body.size,
-        quantity: req.body.quantity,
+        boxQuantity: req.body.boxQuantity,
+        currentStock: req.body.currentStock,
+        initialStock: req.body.initialStock,
         barCodeId: req.body.barCodeId,
     })
     await part.save()
@@ -67,7 +69,7 @@ const updatePart = async(req, res) => {
 
         part.name = req.body.name
         part.size = req.body.size
-        part.quantity = req.body.quantity
+        part.currentStock = req.body.currentStock
         part.barCodeId = req.body.barCodeId
         //await Part.findOneAndUpdate({ _id: req.params.id }, part, { new: true })
         await part.save();

@@ -1,27 +1,30 @@
 import React from 'react';
 import PartItem from './PartItem';
+import Button from '../../shared/FormElements/Button';
 
 import './PartList.css';
 
-const PartList = props => {
-  if (props.items.length === 0) {
+const PartList = (parts) => {
+  if (parts.items.length === 0) {
     return (
       <div className='part-list center' >
-        <h2>No Parts found. maybe create one!</h2>
-        <button to='/parts/new'>make part</button>
+        <h2>No Parts found. maybe create one! ------</h2>
+        <Button to='/new/parts'>make part</Button>
       </div>
     );
   }
 
   return (
     <ul className='part-list'>
-      {props.items?.map(part =>(
+      {parts.items?.map(part =>(
         <PartItem
           key={part._id} 
           id={part._id}
           name={part.name}
           size={part.size}
-          quantity={part.quantity}
+          boxQuantity={part.boxQuantity}
+          currentStock={part.currentStock}
+          initialStock={part.initialStock}
           barCodeId={part.barCodeId}
         />
       ))}

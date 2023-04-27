@@ -24,8 +24,8 @@ const UpdatePart = () => {
         value: '',
         isValid: false
       },
-      quantity: {
-        value: '',
+      currentStock: {
+        value:'',
         isValid: false
       },
       barCodeId: {
@@ -48,8 +48,8 @@ const UpdatePart = () => {
             value: responseData.size,
             isValid: true
           },
-          quantity: {
-            value: responseData.quantity,
+          currentStock: {
+            value: responseData.currentStock,
             isValid: true
           },
           barCodeId: {
@@ -76,7 +76,7 @@ const UpdatePart = () => {
         body: JSON.stringify({
           name: formState.inputs.name.value,
           size: formState.inputs.size.value,
-          quantity: formState.inputs.quantity.value,
+          currentStock: formState.inputs.currentStock.value,
           barCodeId: formState.inputs.barCodeId.value
         })
       });
@@ -102,7 +102,7 @@ const UpdatePart = () => {
           id='name'
           element='input'
           type='text'
-          label='name'
+          label='Part name'
           validators={[VALIDATOR_REQUIRE() ]}
           errorText='Please enter a valid partName.'
           onInput={inputHandler}
@@ -113,7 +113,7 @@ const UpdatePart = () => {
           id='size'
           element='input'
           type='text'
-          label='size'
+          label='Part size'
           validators={[VALIDATOR_REQUIRE() ]}
           errorText='please enter a ammout of parts'
           onInput={inputHandler}
@@ -121,14 +121,14 @@ const UpdatePart = () => {
           initialValid={formState.inputs.size.isValid}
         />
         <Input
-          id='quantity'
+          id='currentStock'
           element='input'
-          label='quantity'
+          label='currentStock'
           validators={[VALIDATOR_MINLENGTH(1)]}
           errorText='please enter quantity over 1'
           onInput={inputHandler}
-          initialValue={formState.inputs.quantity.value}
-          initialValid={formState.inputs.quantity.isValid}
+          initialValue={formState.inputs.currentStock.value}
+          initialValid={formState.inputs.currentStock.isValid}
         />
         <Input
           id='barCodeId'

@@ -9,7 +9,15 @@ const schema = mongoose.Schema ({
         type: String,
         required: true
     },
-    quantity: {
+    boxQuantity: {
+        type: Number,
+        required: true
+    },
+    currentStock: {
+        type: Number,
+        required: false
+    },
+    initialStock: {
         type: Number,
         required: false
     },

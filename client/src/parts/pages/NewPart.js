@@ -18,11 +18,19 @@ const NewPart = () => {
         value: '',
         isValid: false
       },
-      quantity: {
-        value: '',
+      boxQuantity: {
+        value:'',
         isValid: false
       },
-      partNumber: {
+      currentStock: {
+        value:'',
+        isValid: false
+      },
+      initialStock: {
+        value:'',
+        isValid: false
+      },
+      barCodeId: {
         value: '',
         isValid: false
       }
@@ -40,8 +48,10 @@ const NewPart = () => {
         body: JSON.stringify({
           name: formState.inputs.name.value,
           size: formState.inputs.size.value,
-          quantity: formState.inputs.quantity.value,
-          partNumber: formState.inputs.partNumber.value
+          boxQuantity: formState.inputs.boxQuantity.value,
+          currentStock: formState.inputs.currentStock.value,
+          initialStock: formState.inputs.initialStock.value,
+          barCodeId: formState.inputs.barCodeId.value
         })
       });
       const responseData = await response.json();
@@ -61,7 +71,7 @@ const NewPart = () => {
           id='name'
           element='input'
           type='text'
-          label='name'
+          label='Part name'
           validators={[VALIDATOR_REQUIRE() ]}
           errorText='Please enter a valid partName.'
           onInput={inputHandler}
@@ -70,26 +80,50 @@ const NewPart = () => {
           id='size'
           element='input'
           type='text'
-          label='size'
+          label='Part size'
           validators={[VALIDATOR_REQUIRE() ]}
           errorText='please enter a ammout of parts'
           onInput={inputHandler}
         />
         <Input
-          id='quantity'
+          id='boxQuantity'
           element='input'
-          label='quantity'
+          label='box Quantity'
           validators={[VALIDATOR_MINLENGTH(1)]}
           errorText='please enter quantity over 1'
           onInput={inputHandler}
+          initialValue={formState.inputs.boxQuantity.value}
+          initialValid={formState.inputs.boxQuantity.isValid}
         />
         <Input
-          id='partNumber'
+          id='currentStock'
           element='input'
-          label='partNumber'
+          label='current Stock'
           validators={[VALIDATOR_MINLENGTH(1)]}
-          errorText='please enter partNumber longer then  1 charcter'
+          errorText='please enter quantity over 1'
           onInput={inputHandler}
+          initialValue={formState.inputs.currentStock.value}
+          initialValid={formState.inputs.currentStock.isValid}
+        />
+        <Input
+          id='initialStock'
+          element='input'
+          label='initial Stock'
+          validators={[VALIDATOR_MINLENGTH(1)]}
+          errorText='please enter quantity over 1'
+          onInput={inputHandler}
+          initialValue={formState.inputs.initialStock.value}
+          initialValid={formState.inputs.initialStock.isValid}
+        />
+        <Input
+          id='barCodeId'
+          element='input'
+          label='barCodeId'
+          validators={[VALIDATOR_MINLENGTH(1)]}
+          errorText='please enter barCodeId longer then  1 charcter'
+          onInput={inputHandler}
+          initialValue={formState.inputs.barCodeId.value}
+          initialValid={formState.inputs.barCodeId.isValid}
         />
         <Button type='submit' disabled={!formState.isValid}>
           ADD PART
