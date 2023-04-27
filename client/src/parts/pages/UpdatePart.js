@@ -28,7 +28,7 @@ const UpdatePart = () => {
         value: '',
         isValid: false
       },
-      partNumber: {
+      barCodeId: {
         value: '',
         isValid: false
       }
@@ -52,8 +52,8 @@ const UpdatePart = () => {
             value: responseData.quantity,
             isValid: true
           },
-          partNumber: {
-            value: responseData.partNumber,
+          barCodeId: {
+            value: responseData.barCodeId,
             isValid: true
           }
         }, true);
@@ -77,7 +77,7 @@ const UpdatePart = () => {
           name: formState.inputs.name.value,
           size: formState.inputs.size.value,
           quantity: formState.inputs.quantity.value,
-          partNumber: formState.inputs.partNumber.value
+          barCodeId: formState.inputs.barCodeId.value
         })
       });
       const responseData = await response.json();
@@ -131,14 +131,14 @@ const UpdatePart = () => {
           initialValid={formState.inputs.quantity.isValid}
         />
         <Input
-          id='partNumber'
+          id='barCodeId'
           element='input'
-          label='partNumber'
+          label='barCodeId'
           validators={[VALIDATOR_MINLENGTH(1)]}
           errorText='please enter partNumber longer then  1 charcter'
           onInput={inputHandler}
-          initialValue={formState.inputs.partNumber.value}
-          initialValid={formState.inputs.partNumber.isValid}
+          initialValue={formState.inputs.barCodeId.value}
+          initialValid={formState.inputs.barCodeId.isValid}
         />
         <Button type='submit' disabled={!formState.isValid}>
           UPDATE PART

@@ -25,7 +25,7 @@ const createPart = async(req, res) => {
         name: req.body.name,
         size: req.body.size,
         quantity: req.body.quantity,
-        barCodeId: req.body.partNumber,
+        barCodeId: req.body.barCodeId,
     })
     await part.save()
     res.send(part);
@@ -55,7 +55,7 @@ const updatePart = async(req, res) => {
         part.name = req.body.name
         part.size = req.body.size
         part.quantity = req.body.quantity
-        part.barCodeId = req.body.partNumber
+        part.barCodeId = req.body.barCodeId
 
         await Part.findOneAndUpdate({ _id: req.params.id }, part, { new: true })
 

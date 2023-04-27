@@ -17,10 +17,12 @@ const App = () => {
           <MainNavigation />
       <main>
           <Routes>
-              <Route path="/" element={<WorkDay/>}/>
+              {/*workday routes bellow */}
+              <Route exact path='/' element={<WorkDay/>}/>
               <Route exact path='/new/workday' element={<NewWorkDay/>} />
               <Route exact path='/workday/:workDayId' element={<SingleWorkDay/>} />
-              <Route path="/parts" element={<Part/>}/>
+              {/*part routes bellow */}
+              <Route exact path="/parts" element={<Part/>}/>
               <Route exact path='/new/parts' element={<NewPart/>} />
               <Route exact path='/parts/:partId' element={<UpdatePart/>} />
         </Routes>
