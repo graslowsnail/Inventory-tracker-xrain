@@ -97,8 +97,8 @@ const WorkDayDetail = () => {
             {workDay.partsUsed.map(part => (
                 <div key={part._id}>
                 (Part Name: {part.name})
-                -(Size: {part.size})
-                -(quantity: {part.quantity})
+                -(currentStock: {part.currentStock})
+                -(BARCODE ID: {part.barCodeId})
                 </div>
             ))}
             </ul>

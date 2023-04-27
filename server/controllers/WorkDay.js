@@ -99,18 +99,32 @@ const addSinglePartToWorkDay = async(req, res) => {
         console.log(req.body.barCodeId + '   PART BARCODE FROM FRONT END');
 
         const part = await Part.findOne({ barCodeId: barCodeId }) 
-
+        console.log(part);
         const partId = part._id;
+        const partCurrentStock = part.currentStock
+        const partBoxQuantity = part.boxQuantity;
+        const updatedPartCurrentStock = partCurrentStock - partBoxQuantity;
 
+        
+        part.currentStock = updatedPartCurrentStock;
+
+        await part.save();
+        
         if(!barCodeId) {
             return res.status(404).send({ error: 'a part with that barCodeId was not found' })
         }
-        const workday = await WorkDay.findOne({_id: req.params.id})
-        //const workday = await WorkDay.findOneAndUpdate({ _id: req.params.id }, { partsUsed: partsUsed }, {new: true})
-        const partsUsed = workday.partsUsed;
-        partsUsed.push([partId]);
 
-        await workday.save();
+        const workday = await WorkDay.findOne({_id: req.params.id})
+        const partsUsed = workday.partsUsed;
+
+        if(partsUsed.includes(partId)) {
+            console.log('partId already inside array');
+            await workday.save();
+        } else {
+            partsUsed.push([partId]);
+            await workday.save();
+        }
+
         res.send(workday);
     } catch (err) {
         console.log('########');
