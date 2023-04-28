@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect } from 'react';
+import React, { useReducer, useEffect, useRef } from 'react';
 
 import { validate } from '../util/validators';
 import './Input.css';
@@ -36,6 +36,15 @@ const Input = props => {
     onInput(id, value,isValid)
   }, [id,value,isValid, onInput]);
 
+    const inputRef = useRef(null); // Create a ref for the input element
+
+  useEffect(() => {
+          if (document.querySelectorAll('.form-control').length > 1) {
+          } else {
+    inputRef.current.focus(); // Focus on the input element when the component mounts
+          }
+  }, []);
+
   const changeHandler = event => {
     dispatch({
       type: 'CHANGE',
@@ -53,6 +62,7 @@ const Input = props => {
   const element = 
     props.element === 'input' ? (
       <input
+        ref={inputRef} // Pass the ref to the input element
         _id={props._id}
         type={props.type}
         placeholder={props.placeholder}

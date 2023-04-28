@@ -14,6 +14,7 @@ const WorkDayDetail = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [isDeleting, setIsDeleting] = useState(false);
     const [showConfirmation, setShowConfirmation] = useState(false);
+    const [count, setCount] = useState(1);
 
   useEffect(() => {
       setIsLoading(true);
@@ -65,6 +66,11 @@ const WorkDayDetail = () => {
     setShowConfirmation(false);
   };
 
+  const handleChange = (event) => {
+      setCount(count + 1);
+      console.log(count);
+    };
+
     if(!workDay) {
         return (
           <div className='part-list center' > <h2>No WorkDay found. maybe create one!</h2>
@@ -95,8 +101,9 @@ const WorkDayDetail = () => {
           <h3> PART USED ON {formattedDate}</h3>
             <ul>
             {workDay.partsUsed.map(part => (
-                <div key={part._id}>
-                (Part Name: {part.name})
+                <div key={part._id} >
+                -Parts grabbed:{count}  
+                    (Part Name: {part.name})
                 -(currentStock: {part.currentStock})
                 -(BARCODE ID: {part.barCodeId})
                 </div>

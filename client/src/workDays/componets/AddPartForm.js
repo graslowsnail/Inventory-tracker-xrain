@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Input from '../../shared/FormElements/Input';
 import Button from '../../shared/FormElements/Button';
 import Card from '../../shared/UIElements/Card';
@@ -37,7 +37,7 @@ const AddPartForm = ({ workDay, workDayId }) => {
             console.log(responseData);
             setIsSuccess(true);
             setIsLoading(false);
-            // may want to redirect to another page (idk) i dont think so
+        
             window.location.reload();
         } catch (err) {
             console.log(err.message);
