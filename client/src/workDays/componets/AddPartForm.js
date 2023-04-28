@@ -9,6 +9,7 @@ import '../../parts/pages/PartForm.css';
 
 const AddPartForm = ({ workDay, workDayId }) => {
   const [isSuccess, setIsSuccess] = useState(false);
+    const [error, setError] = useState(false)
     const [isLoading, setIsLoading] = useState(false);
     const [formState, inputHandler] = useForm(
     {
@@ -34,13 +35,19 @@ const AddPartForm = ({ workDay, workDayId }) => {
             });
 
             const responseData = await response.json();
-            console.log(responseData);
+
+            if (!response.ok) {
+                throw new Error(responseData.message);
+            }
+
             setIsSuccess(true);
             setIsLoading(false);
-        
             window.location.reload();
         } catch (err) {
-            console.log(err.message);
+            event.preventDefault();
+            setIsSuccess(false)
+            setError(true);
+            console.error(err);
             setIsLoading(false);
         }
     };
@@ -63,6 +70,7 @@ const AddPartForm = ({ workDay, workDayId }) => {
   return (
       <div>
       {isSuccess && <p>Part Updated successfully!</p>}
+      {error && <p> ERROR SCANNIGN PART,TRY AGAIN!</p>}
       <form className='part-form' onSubmit={addPartSubmitHandler}>
         <Input
           id='barCodeId'

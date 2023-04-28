@@ -84,7 +84,7 @@ const UpdatePart = () => {
       console.log(responseData);
       setIsSuccess(true);
       // you may want to redirect the user to a success page instead of reloading the page
-      window.location.reload();
+     window.location.href = `/parts`;
     } catch (err) {
       console.log(err.message);
     }
