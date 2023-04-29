@@ -11,6 +11,7 @@ const schema = mongoose.Schema ({
     partsUsed: [{
         type: ObjectId,
         ref: 'Part',
+        qty: {type: Number, default: 0}
     }],
 },
     { timestamps: true }

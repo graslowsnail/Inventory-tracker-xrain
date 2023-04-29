@@ -15,20 +15,22 @@ const PartList = (parts) => {
   }
 
   return (
-    <ul className='part-list'>
-      {parts.items?.map(part =>(
-        <PartItem
-          key={part._id} 
-          id={part._id}
-          name={part.name}
-          size={part.size}
-          boxQuantity={part.boxQuantity}
-          currentStock={part.currentStock}
-          initialStock={part.initialStock}
-          barCodeId={part.barCodeId}
-        />
-      ))}
-    </ul>
+    <div>
+        <ul className='part-list'>
+          {parts.items?.map(part =>(
+            <PartItem
+              key={part._id} 
+              id={part._id}
+              name={part.name}
+              size={part.size}
+              boxQuantity={part.boxQuantity}
+              currentStock={part.currentStock}
+              initialStock={part.initialStock}
+              barCodeId={part.barCodeId}
+            />
+          ))}
+        </ul>
+    </div>
   );
 };
 
