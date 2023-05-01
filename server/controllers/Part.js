@@ -8,7 +8,7 @@ const getParts = async (req, res) => {
     const parts = await Part.find();
     res.send(parts);
     } catch(err) {
-        console.log('########');
+        console.log('########YERRR');
         console.log( err.message)
         res.status(500).send({ error: err.message })
     }
@@ -40,7 +40,7 @@ const createPart = async(req, res) => {
     await part.save()
     res.send(part);
     } catch(err) {
-        console.log('########');
+        console.log('########YO');
         console.log( err.message)
         res.status(500).send({ error: err.message })
     }
@@ -56,6 +56,22 @@ const deletePart = async(req, res) => {
         console.log('ERROR DELETEING PART')
         res.send({ error: 'Part did not exist' })
     }
+};
+
+// UPDATED ALL PARTS CURRENTSTOCK WITH INITIALSTOCK VALUE
+const resetAllPartsCurrentStock = async (req, res) => {
+    try {
+    const partsList = await Part.find();
+        partsList.forEach(async (part) => {
+          part.currentStock = part.initialStock;
+          await part.save();
+        });
+        res.status(204).send()
+    console.log('Current stock updated successfully!');
+
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 // UPDATE a part
@@ -75,16 +91,18 @@ const updatePart = async(req, res) => {
         await part.save();
         res.send(part)
     } catch (err) {
-        console.log('########');
+        console.log('########HERE');
         console.log( err.message)
         res.status(500).send({ error: err.message })
     }
 };
+
 
 module.exports = {
     getParts,
     getPartById,
     createPart,
     deletePart,
-    updatePart
+    updatePart,
+    resetAllPartsCurrentStock
 };
