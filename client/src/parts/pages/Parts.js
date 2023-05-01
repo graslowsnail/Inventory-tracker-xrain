@@ -7,7 +7,6 @@ const Part = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [showConfirmation, setShowConfirmation]= useState(false);
-  const [isReseting, setIsReseting] = useState(false);
 
   useEffect(() => {
     fetch('http://localhost:3002/api/parts')
@@ -36,8 +35,8 @@ const Part = () => {
   }
 
 const resetPartsHandler = async () => {
-
-  setIsReseting(true);
+    console.log('THIS WILL RESET PARTS CURRENT STOCK AND REPLACE IT WITH ITS INITIAL STOCK VALUE');
+    /*
   try {
     const response = await fetch("http://localhost:3002/api/parts/reset", {
       method: "PUT",
@@ -48,14 +47,13 @@ const resetPartsHandler = async () => {
     if (!response.ok) {
       throw new Error(response.status);
     }
-    setIsReseting(false);
     console.log("ALL PARTS RESET");
     window.location.reload();
   } catch (error) {
-    setIsReseting(false);
     console.log(`ERROR resetting part data ${error.message}`);
     // Display error message to the user
   }
+    */
 };
 
 const showConfirmationHandler = () => {

@@ -24,9 +24,9 @@ router.post('/parts', createPart)
 router.delete('/parts/:id', deletePart)
 
 // UPDATE Part
-//router.put('/parts/:id', updatePart)
+router.put('/parts/:id', updatePart)
 
 // RESET PARTS CURRENTSTOCK
-router.put('/parts/reset', resetAllPartsCurrentStock);
+//router.put('/parts/reset', resetAllPartsCurrentStock);
 
 module.exports = router;
