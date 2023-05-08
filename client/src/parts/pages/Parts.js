@@ -36,10 +36,23 @@ const Part = () => {
 
 const resetPartsHandler = async () => {
     console.log('THIS WILL RESET PARTS CURRENT STOCK AND REPLACE IT WITH ITS INITIAL STOCK VALUE');
+    try {
+        const response = await fetch('http://localhost:3002/api/parts/copy-to-part-history', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+    const data = await response.json();
+    console.log(data); // show the response from the server
+  } catch (error) {
+    console.error(error);
+  }
     /*
   try {
     const response = await fetch("http://localhost:3002/api/parts/reset", {
-      method: "PUT",
+      method: "GET",
       headers: {
         "Content-Type": "application/json",
       },

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Part = require('../models/Part.js');
+const PartHistory = require('../models/PartHistory.js');
 
 
 // GET all parts
@@ -58,22 +59,6 @@ const deletePart = async(req, res) => {
     }
 };
 
-// UPDATED ALL PARTS CURRENTSTOCK WITH INITIALSTOCK VALUE
-const resetAllPartsCurrentStock = async (req, res) => {
-    try {
-    const partsList = await Part.find();
-        partsList.forEach(async (part) => {
-          part.currentStock = part.initialStock;
-          await part.save();
-        });
-        res.status(204).send()
-    console.log('Current stock updated successfully!');
-
-  } catch (error) {
-    console.error(error);
-  }
-};
-
 // UPDATE a part
 const updatePart = async(req, res) => {
     try {
@@ -97,6 +82,55 @@ const updatePart = async(req, res) => {
     }
 };
 
+// UPDATED ALL PARTS CURRENTSTOCK WITH INITIALSTOCK VALUE
+const resetAllPartsCurrentStock = async (req, res) => {
+    try {
+    const partsList = await Part.find();
+        partsList.forEach(async (part) => {
+          part.currentStock = part.initialStock;
+          await part.save();
+        });
+        res.status(204).send()
+    console.log('Current stock updated successfully!');
+
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+// adds parts data into new partHistory schema 
+const addPartDataIntoPartHistory = async (req, res) => {
+  try {
+    const parts = await Part.find({});
+
+    for (const part of parts) {
+      let partHistory = await PartHistory.findOne({ name: part.name });
+
+      if (partHistory) {
+        // If a PartHistory document already exists for this part, update its currentStock property
+        partHistory.currentStock = part.currentStock;
+      } else {
+        // If a PartHistory document doesn't exist yet, create a new one
+        partHistory = new PartHistory({
+          name: part.name,
+          currentStock: part.currentStock,
+          initialStock: part.initialStock,
+          usedStockAmmount: part.initialStock - part.currentStock
+          // copy any other properties you want to include in the PartHistory schema
+        });
+      }
+
+        console.log(partHistory);
+      await partHistory.save();
+    }
+
+    res.json({ message: 'Parts copied to PartHistory successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ error: error.message });
+  }
+};
+
 
 module.exports = {
     getParts,
@@ -104,5 +138,6 @@ module.exports = {
     createPart,
     deletePart,
     updatePart,
-    resetAllPartsCurrentStock
+    resetAllPartsCurrentStock,
+    addPartDataIntoPartHistory
 };

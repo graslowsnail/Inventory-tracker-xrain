@@ -8,7 +8,8 @@ const {
     createPart,
     deletePart,
     updatePart,
-    resetAllPartsCurrentStock
+    resetAllPartsCurrentStock,
+    addPartDataIntoPartHistory
 } = require('../controllers/Part.js');
 
 // GET all parts
@@ -27,6 +28,7 @@ router.delete('/parts/:id', deletePart)
 router.put('/parts/:id', updatePart)
 
 // RESET PARTS CURRENTSTOCK
-//router.put('/parts/reset', resetAllPartsCurrentStock);
+//router.get('/parts/reset', resetAllPartsCurrentStock);
+router.post ('/parts/copy-to-part-history', addPartDataIntoPartHistory)
 
 module.exports = router;
