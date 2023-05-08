@@ -103,26 +103,33 @@ const addPartDataIntoPartHistory = async (req, res) => {
   try {
     const parts = await Part.find({});
 
-    for (const part of parts) {
-      let partHistory = await PartHistory.findOne({ name: part.name });
+        for (const part of parts) {
+          let partHistory = await PartHistory.findOne({ name: part.name });
 
-      if (partHistory) {
-        // If a PartHistory document already exists for this part, update its currentStock property
-        partHistory.currentStock = part.currentStock;
-      } else {
-        // If a PartHistory document doesn't exist yet, create a new one
-        partHistory = new PartHistory({
-          name: part.name,
-          currentStock: part.currentStock,
-          initialStock: part.initialStock,
-          usedStockAmmount: part.initialStock - part.currentStock
-          // copy any other properties you want to include in the PartHistory schema
-        });
-      }
+          if (partHistory) {
+            // If a PartHistory document already exists for this part, update its currentStock property
+            partHistory.currentStock = part.currentStock;
+          } else {
+            // If a PartHistory document doesn't exist yet, create a new one
+            partHistory = new PartHistory({
+              name: part.name,
+              currentStock: part.currentStock,
+              initialStock: part.initialStock,
+              usedStockAmmount: part.initialStock - part.currentStock,
+              // copy any other properties you want to include in the PartHistory schema
+            });
+          }
 
-        console.log(partHistory);
-      await partHistory.save();
-    }
+            // If the usedStockAmmount is zero, update it to prevent saving unnecessary document
+            if (part.initialStock === part.currentStock) {
+                partHistory.isUsed = false;
+            } else {
+                partHistory.isUsed = true
+            }
+
+            console.log(partHistory);
+          await partHistory.save();
+        }
 
     res.json({ message: 'Parts copied to PartHistory successfully' });
   } catch (error) {

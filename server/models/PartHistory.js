@@ -7,15 +7,19 @@ const schema = mongoose.Schema({
     },
     currentStock: {
         type: Number,
-        requireed: true
+        required: true
     },
     initialStock: {
         type: Number,
-        requireed: true
+        required: true
     },
     usedStockAmmount: {
         type: Number,
-        requireed: true
+        required: true
+    },
+    isUsed: {
+        type: Boolean,
+        required: true   
     }
 });
 
