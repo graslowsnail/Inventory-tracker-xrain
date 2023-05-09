@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import PartList from '../componets/PartList.js';
-import Button from '../../shared/FormElements/Button';
+import Button from '../../shared/FormElements/Button.js';
+import PartItem from '../componets/PartItem.js';
+//import PartList from '../componets/PartList.js';
+
 
 const PartHistory = () => {
-    const [partHistory, setPartHistory] = useState([]);
+  const [partHistory, setPartHistory] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [showConfirmation, setShowConfirmation]= useState(false);
-
 
     useEffect(() => {
-    fetch('http://localhost:3002/api/partHistory')
+    fetch('http://localhost:3002/api/parts/partHistory')
       .then(response => {
         if (!response.ok) {
           throw new Error('Failed to fetch partHistory');
@@ -34,27 +34,33 @@ const PartHistory = () => {
     return <div>{error}</div>;
   }
 
-
-const showConfirmationHandler = () => {
-    setShowConfirmation(true);
-  };
-const cancelResetHandler = () => {
-    setShowConfirmation(false);
-};
-
-
+  if (partHistory.items.length === 0) {
+    return (
+      <div className='part-list center' >
+        <h2>No Parts found. maybe create one! ------</h2>
+        <Button to='/new/parts'>make part</Button>
+      </div>
+    );
+  }
 
   return (
       <div>
-
-          <PartList items={partHistory} />
+        {partHistory.items?.map(part =>(
+            <PartItem
+              key={part._id} 
+              id={part._id}
+              name={part.name}
+              size={part.size}
+              boxQuantity={part.boxQuantity}
+              currentStock={part.currentStock}
+              initialStock={part.initialStock}
+              usedStockAmmout={part.usedStockAmmout}
+              isUsed={part.isUsed}
+            />
+          ))}
 
       </div>
   );
 };
 
-export default Part;
-
-
-      
-};
+export default PartHistory;

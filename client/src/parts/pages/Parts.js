@@ -49,24 +49,6 @@ const resetPartsHandler = async () => {
   } catch (error) {
     console.error(error);
   }
-    /*
-  try {
-    const response = await fetch("http://localhost:3002/api/parts/reset", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    if (!response.ok) {
-      throw new Error(response.status);
-    }
-    console.log("ALL PARTS RESET");
-    window.location.reload();
-  } catch (error) {
-    console.log(`ERROR resetting part data ${error.message}`);
-    // Display error message to the user
-  }
-    */
 };
 
 const showConfirmationHandler = () => {

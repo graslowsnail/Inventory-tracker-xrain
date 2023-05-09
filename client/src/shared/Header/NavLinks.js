@@ -18,6 +18,9 @@ const NavLinks = props => {
             <NavLink to='/new/parts'> NEW PART </NavLink>
         </li>
         <li>
+            <NavLink to='/parthistory'> PART HISTORY </NavLink>
+        </li>
+        <li>
             <NavLink to='/auth'> AUTHENTHICATE </NavLink>
         </li>
     </ul>

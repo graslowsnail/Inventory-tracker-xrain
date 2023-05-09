@@ -23,7 +23,6 @@ const getPartById = async (req, res) => {
     } catch {
         res.status(404);
         res.send({ error: 'Part doesnt exist!'});
-        res.status(500).send({ error: err.message })
     }
 };
 

@@ -9,6 +9,7 @@ import WorkDay from './workDays/pages/WorkDay';
 import NewWorkDay from './workDays/pages/NewWorkDay';
 import UpdatePart from './parts/pages/UpdatePart';
 import SingleWorkDay from './workDays/pages/singleWorkDay';
+import PartHistory from './parts/pages/PartsHistory';
 
 const App = () => {
 
@@ -25,6 +26,7 @@ const App = () => {
               <Route exact path="/parts" element={<Part/>}/>
               <Route exact path='/new/parts' element={<NewPart/>} />
               <Route exact path='/parts/:partId' element={<UpdatePart/>} />
+              <Route exact path='/parthistory' element={<PartHistory/>} />
         </Routes>
       </main>
     </Router>
