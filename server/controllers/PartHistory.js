@@ -4,8 +4,8 @@ const PartHistory = require('../models/PartHistory.js');
 // GET PART HISTORY
 const getPartsHistory = async(req, res) => {
     try {
-    const partsHistory  = await PartHistory.find();
-    res.send(partsHistory);
+    const partHistory  = await PartHistory.find();
+    res.send(partHistory);
     } catch(err) {
         console.log('########YERRR');
         console.log( err.message)

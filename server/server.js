@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 //routes
 const partRoutes = require('./routes/partRoutes.js');
 const WorkDayRoutes = require('./routes/workDayRoutes.js');
+const partHistoryRoutes = require('./routes/partHistoryRoutes.js');
 
 // express app
 const app = express();
@@ -37,8 +38,9 @@ mongoose.connect(
 );
 
 
-app.use('/api', partRoutes)
-app.use('/api', WorkDayRoutes)
+app.use('/api', partRoutes);
+app.use('/api', WorkDayRoutes);
+app.use('/api', partHistoryRoutes);
 
 // this logs the mongoDb queries being executed
 mongoose.set('debug', true);
