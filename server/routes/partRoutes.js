@@ -31,4 +31,6 @@ router.put('/parts/:id', updatePart)
 //router.get('/parts/reset', resetAllPartsCurrentStock);
 router.post ('/parts/copy-to-part-history', addPartDataIntoPartHistory)
 
+//router.put('/parts/reset', resetAllPartsCurrentStock);
+
 module.exports = router;

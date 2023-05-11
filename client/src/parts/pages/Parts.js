@@ -34,8 +34,8 @@ const Part = () => {
     return <div>{error}</div>;
   }
 
-const resetPartsHandler = async () => {
-    console.log('THIS WILL RESET PARTS CURRENT STOCK AND REPLACE IT WITH ITS INITIAL STOCK VALUE');
+const setPartHistoryHandler = async () => {
+    console.log('THIS WILL SET PART HISTORY DATA');
     try {
         const response = await fetch('http://localhost:3002/api/parts/copy-to-part-history', {
       method: 'POST',
@@ -49,6 +49,23 @@ const resetPartsHandler = async () => {
   } catch (error) {
     console.error(error);
   }
+};
+
+const resetPartHandler = async () => {
+    console.log('THIS WILL RESET PARTS CURRENT STOCK AND REPLACE IT WITH ITS INITIAL STOCK VALUE');
+    try {
+        const response = await fetch('http://localhost:3002/api/parts', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        const data = await response.json();
+        console.log(data); // show response from server
+    } catch (error){
+        console.log(error);
+    }
 };
 
 const showConfirmationHandler = () => {
@@ -69,7 +86,7 @@ const cancelResetHandler = () => {
           <br/>
           --Clicking reset will restet all the current stock with the initial stock.
           </p>
-          <Button danger onClick={resetPartsHandler}>RESET PARTS</Button>
+          <Button danger onClick={setPartHistoryHandler}>RESET PARTS</Button>
           <Button onClick={cancelResetHandler}>CANCEL</Button>
         </div>
       )}

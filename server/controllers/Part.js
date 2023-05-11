@@ -98,6 +98,7 @@ const resetAllPartsCurrentStock = async (req, res) => {
 };
 
 // adds parts data into new partHistory schema 
+// this works in conjunction with the setPartHistoryHandler in frontend
 const addPartDataIntoPartHistory = async (req, res) => {
   try {
     const parts = await Part.find({});
