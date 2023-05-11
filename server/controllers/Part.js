@@ -22,7 +22,7 @@ const getPartById = async (req, res) => {
         res.send(part);
     } catch {
         res.status(404);
-        res.send({ error: 'Part doesnt exist!'});
+        res.send({ error: 'Part doesnt exist! GETPARTBYID'});
     }
 };
 
@@ -40,7 +40,7 @@ const createPart = async(req, res) => {
     await part.save()
     res.send(part);
     } catch(err) {
-        console.log('########YO');
+        console.log('######## CREATE PART');
         console.log( err.message)
         res.status(500).send({ error: err.message })
     }
@@ -64,7 +64,7 @@ const updatePart = async(req, res) => {
         const part = await Part.findOne({ _id: req.params.id })
 
         if (!part) {
-            return res.status(404).send({ error: 'Part not found' })
+            return res.status(404).send({ error: 'Part not found UPDATEPART' })
         }
 
         part.name = req.body.name
@@ -75,7 +75,7 @@ const updatePart = async(req, res) => {
         await part.save();
         res.send(part)
     } catch (err) {
-        console.log('########HERE');
+        console.log('######## UPDATE PART');
         console.log( err.message)
         res.status(500).send({ error: err.message })
     }
@@ -94,6 +94,7 @@ const resetAllPartsCurrentStock = async (req, res) => {
 
   } catch (error) {
     console.error(error);
+      console.log('###### RESETALLPARTSCURRENTSTOCK');
   }
 };
 
@@ -107,9 +108,9 @@ const addPartDataIntoPartHistory = async (req, res) => {
           let partHistory = await PartHistory.findOne({ name: part.name });
 
           if (partHistory) {
-            // If a PartHistory document already exists for this part, update its currentStock property
-            partHistory.currentStock = part.currentStock;
-          } else {
+            // If a PartHistory document already exists drop the collection and remake it 
+              PartHistory.collection.drop();
+          } 
             // If a PartHistory document doesn't exist yet, create a new one
             partHistory = new PartHistory({
               name: part.name,
@@ -118,7 +119,6 @@ const addPartDataIntoPartHistory = async (req, res) => {
               usedStockAmmount: part.initialStock - part.currentStock,
               // copy any other properties you want to include in the PartHistory schema
             });
-          }
 
             // If the usedStockAmmount is zero, update it to prevent saving unnecessary document
             if (part.initialStock === part.currentStock) {
