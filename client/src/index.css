@@ -1,5 +1,6 @@
-
-
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap');
 
 * {
@@ -12,7 +13,6 @@ html {
 
 body {
   margin: 0;
-  background: #4d4d4d;
 }
 
 .slide-in-left-enter {

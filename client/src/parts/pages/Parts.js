@@ -78,21 +78,22 @@ const cancelResetHandler = () => {
 };
 
 
-
   return (
       <div>
+      <div>
           <Button onClick={showConfirmationHandler}> RESTART PART COUNT</Button>
-      {showConfirmation && (
-        <div className="part-item__confirmation">
-          <p>--Are you sure you want to reset all parts current stock?
-          <br/>
-          --Clicking reset will restet all the current stock with the initial stock.
-          </p>
-          <Button danger onClick={resetPartHandler}>RESET PART DATA</Button>
-          <Button danger onClick={setPartHistoryHandler}>SET PARTHISTORY</Button>
-          <Button onClick={cancelResetHandler}>CANCEL</Button>
-        </div>
-      )}
+              {showConfirmation && (
+                <div className="part-item__confirmation">
+                  <p>--Are you sure you want to reset all parts current stock?
+                  <br/>
+                  --Clicking reset will restet all the current stock with the initial stock.
+                  </p>
+                  <Button danger onClick={resetPartHandler}>RESET PART DATA</Button>
+                  <Button danger onClick={setPartHistoryHandler}>SET PARTHISTORY</Button>
+                  <Button onClick={cancelResetHandler}>CANCEL</Button>
+                </div>
+              )}
+      </div>
 
           <PartList items={parts} />
 
