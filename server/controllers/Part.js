@@ -114,9 +114,11 @@ const addPartDataIntoPartHistory = async (req, res) => {
             // If a PartHistory document doesn't exist yet, create a new one
             partHistory = new PartHistory({
               name: part.name,
+                size: part.size,
               currentStock: part.currentStock,
               initialStock: part.initialStock,
               usedStockAmmount: part.initialStock - part.currentStock,
+                boxQuantity: part.boxQuantity
               // copy any other properties you want to include in the PartHistory schema
             });
 

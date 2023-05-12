@@ -5,7 +5,7 @@ const PartHistortList = (partHistory) => {
 
     return (
         <div>
-                <ul className='part-list'>
+                <ul className=''>
           {partHistory.items?.map(part =>(
             <PartHistoryItem
               key={part._id} 

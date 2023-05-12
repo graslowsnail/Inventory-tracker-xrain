@@ -5,6 +5,10 @@ const schema = mongoose.Schema({
         type: String,
         requireed: true
     },
+    size: {
+        type: String,
+        required: true
+    },
     currentStock: {
         type: Number,
         required: true
@@ -19,6 +23,10 @@ const schema = mongoose.Schema({
     },
     isUsed: {
         type: Boolean,
+        required: true   
+    },
+    boxQuantity: {
+        type: Number,
         required: true   
     }
 });

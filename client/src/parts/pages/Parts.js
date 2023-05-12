@@ -46,6 +46,7 @@ const setPartHistoryHandler = async () => {
 
     const data = await response.json();
     console.log(data); // show the response from the server
+     //await window.location.href = `/parthistory`;
   } catch (error) {
     console.error(error);
   }
@@ -60,9 +61,9 @@ const resetPartHandler = async () => {
                 'Content-Type': 'application/json'
             },
         });
-
-        const data = await response.json();
-        console.log(data); // show response from server
+        //const data = await response.json();
+        console.log(response.json()); // show response from server
+        window.location.reload();
     } catch (error){
         console.log('############ ResetPartHandler');
         console.log(error);
