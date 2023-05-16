@@ -5,7 +5,7 @@ const Part = require('../models/Part.js');
 // GET all WorkDays
 const getWorkDays = async (req, res) => {
   try {
-    const workDays = await WorkDay.find();
+      const workDays = await WorkDay.find().sort({ createdAt: -1 });
     if (!workDays) {
       throw new Error('No workdays found');
     }

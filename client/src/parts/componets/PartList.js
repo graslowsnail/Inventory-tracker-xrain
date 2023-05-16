@@ -6,10 +6,14 @@ const PartList = (parts) => {
       
   const [isDeleting, setIsDeleting] = useState(false);
   const [showConfirmation, setShowConfirmation] = useState(false);
+  const [selectedPart, setSelectedPart] = useState(null);
 
-  const deletePartHandler = () => {
-    setIsDeleting(true);
-    fetch(`http://localhost:3002/api/parts/${parts.id}`, {
+
+  const deletePartHandler = (part) => {
+      setSelectedPart(part);
+      setShowConfirmation(true);
+
+    fetch(`http://localhost:3002/api/parts/${part._id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
@@ -89,7 +93,7 @@ const PartList = (parts) => {
               <tbody className="divide-y divide-gray-200">
 
                 {parts.items?.map(part =>(
-                  <tr key={part.name}>
+                  <tr key={part._id}>
                     <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
                       {part.name}
                     </td>
@@ -100,23 +104,23 @@ const PartList = (parts) => {
                     <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{part.barCodeId}</td>
 
                     <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
-                          <Button className="text-indigo-600 hover:text-indigo-900" to={`/parts/${part._id}`}>EDIT</Button>
-                          <Button danger onClick={showConfirmationHandler} disabled={isDeleting}>
-                            {isDeleting ? 'DELETING...' : 'DELETE'}
-                          </Button>
-
+                      <Button className="text-indigo-600 hover:text-indigo-900" to={`/parts/${part._id}`}>EDIT</Button>
+                        <Button danger onClick={() => deletePartHandler(part)} disabled={isDeleting}>
+                          {isDeleting ? 'DELETING...' : 'DELETE'}
+                        </Button>
                     </td>
+
                   </tr>
                 ))}
               </tbody>
             </table>
-                    {showConfirmation && (
-        <div className="part-item__confirmation">
-          <p>Are you sure you want to delete this part?</p>
-          <Button danger onClick={deletePartHandler}>DELETE</Button>
-          <Button onClick={cancelDeleteHandler}>CANCEL</Button>
-        </div>
-      )}
+            {showConfirmation && selectedPart && (
+                <div className="part-item__confirmation">
+                  <p>Are you sure you want to delete this part?</p>
+                  <Button danger onClick={() => deletePartHandler(selectedPart)}>DELETE</Button>
+                  <Button onClick={cancelDeleteHandler}>CANCEL</Button>
+                </div>
+          )}
 
           </div>
         </div>
