@@ -4,7 +4,6 @@ import Input from '../../shared/FormElements/Input';
 import Button from '../../shared/FormElements/Button';
 import Card from '../../shared/UIElements/Card';
 import { VALIDATOR_MINLENGTH, VALIDATOR_REQUIRE } from '../../shared/util/validators';
-import './PartForm.css';
 import { useForm } from '../../shared/hooks/form-hook';
 
 const NewPart = () => {
@@ -65,6 +64,10 @@ const NewPart = () => {
 
   return (
     <Card>
+      <h1 className=''>
+      ADD NEW PART
+      </h1>
+
       {isSuccess && <p>Part added successfully!</p>}
       <form className='part-form' onSubmit={partSubmitHandler}>
         <Input
@@ -132,5 +135,5 @@ const NewPart = () => {
     </Card>
   );
 };
-
 export default NewPart;
+

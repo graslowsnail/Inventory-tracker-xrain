@@ -100,6 +100,7 @@ const WorkDayDetail = () => {
 
           <h3> PART USED ON {formattedDate}</h3>
             <ul>
+
             {workDay.partsUsed.map(part => (
                 <div key={part._id} >
                 -Parts grabbed:{count}  

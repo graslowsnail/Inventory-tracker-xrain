@@ -45,6 +45,7 @@ const NewWorkDay = () => {
 
   return (
     <Card>
+      <h1> ADD NEW WORKDAY</h1>
     {isSuccess && <p>Part added successfully!</p> }
     <form className='part-form' onSubmit={workDaySubmitHandler}>
         <Input
