@@ -1,5 +1,8 @@
-# A project to track the inventory of X-Rain Irrigation
+# X-Rain Inc Inventory Tracker
 
-A web app made to track what parts were used on a specific day of the working week...
+The X-Rain inc Parts Tracking App is a MERN application developted to efficiently manage and track parts used by the compary over a specific time period. This App aiims to streamline the process of monitoring and analyzing the usage of parts, ensuring accurate inventory mangement and facilitating effective decision making.
 
-Future implementations will track the working days for each employee.
+## Authors
+
+- [@graslowsnail](https://www.github.com/graslowsnail)
+
