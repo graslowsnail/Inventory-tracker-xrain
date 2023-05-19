@@ -21,7 +21,7 @@ const NavLinks = props => {
             <NavLink to='/parthistory'> PART HISTORY </NavLink>
         </li>
         <li>
-            <NavLink to='/auth'> AUTHENTHICATE </NavLink>
+            <NavLink to='/login'> AUTHENTHICATE </NavLink>
         </li>
     </ul>
   );
