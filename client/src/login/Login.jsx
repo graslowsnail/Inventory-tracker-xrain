@@ -47,21 +47,7 @@ const Login = () => {
 
 export default Login;
 */
-    /*
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
-*/
-export default function Example() {
+const Login = () => {
   return (
     <>
       {/*
@@ -80,7 +66,7 @@ export default function Example() {
             alt="x-rain logo"
           />
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-            Sign in to your account
+            Sign in!
           </h2>
         </div>
 
@@ -136,5 +122,6 @@ export default function Example() {
       </div>
     </>
   )
-}
+};
 
+export default Login;
