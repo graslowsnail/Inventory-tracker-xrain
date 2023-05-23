@@ -1,6 +1,7 @@
 import xrainLogo from './xrainLogo.jpg';
-/*
 import React from "react";
+
+import './Login.css';
 
 const Login = () => {
   //When the user submits the form, prevent the default action, grab the email and password from the form, send a POST request to the backend with the email and password, and if the response is successful, store the token in local storage and reload the page. 
@@ -9,7 +10,7 @@ const Login = () => {
     const { email, password } = event.target;
 
     const response = await fetch(
-      `${process.env.REACT_APP_BACKEND_URL}/auth/login`,
+        'http://localhost:3002/api/auth/login',
       {
         method: "POST",
         headers: {
@@ -24,7 +25,8 @@ const Login = () => {
 
     const data = await response.json();
     localStorage.setItem("token", data.token);
-    window.location.reload();
+      console.log(data.token);
+    //window.location.reload();
   };
 
   return (
@@ -46,7 +48,9 @@ const Login = () => {
 };
 
 export default Login;
-*/
+
+/*
+    
 const Login = () => {
   return (
     <>
@@ -57,7 +61,7 @@ const Login = () => {
         <html class="h-full bg-white">
         <body class="h-full">
         ```
-      */}
+      }
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img
@@ -125,3 +129,4 @@ const Login = () => {
 };
 
 export default Login;
+*/

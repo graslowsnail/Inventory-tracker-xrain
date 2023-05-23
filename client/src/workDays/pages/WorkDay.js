@@ -7,9 +7,17 @@ const WorkDay = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
+    const token = localStorage.getItem("token");
+
   useEffect(() => {
     setIsLoading(true);
-    fetch('http://localhost:3002/api/workdays')
+    fetch('http://localhost:3002/api/workdays',
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+    )
       .then(response => {
             if (!response.ok) {
               throw new Error('Failed to fetch workdays');
@@ -24,7 +32,7 @@ const WorkDay = () => {
         setError(error.message);
         setIsLoading(false);
       });
-  }, []);
+  }, [token]);
 
   if (isLoading) {
     return <div>Loading...</div>;

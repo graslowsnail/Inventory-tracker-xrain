@@ -7,9 +7,17 @@ const Part = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [showConfirmation, setShowConfirmation]= useState(false);
+        const token = localStorage.getItem("token");
+
 
   useEffect(() => {
-    fetch('http://localhost:3002/api/parts')
+    fetch('http://localhost:3002/api/parts',
+                {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+    )
       .then(response => {
         if (!response.ok) {
           throw new Error('Failed to fetch parts');
@@ -24,7 +32,7 @@ const Part = () => {
         setError(error.message);
         setLoading(false);
       });
-  }, []);
+  }, [token]);
 
   if (loading) {
     return <div>Loading...</div>;
