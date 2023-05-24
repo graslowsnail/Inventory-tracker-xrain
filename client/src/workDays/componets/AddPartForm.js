@@ -11,7 +11,9 @@ const AddPartForm = ({ workDay, workDayId }) => {
   const [isSuccess, setIsSuccess] = useState(false);
     const [error, setError] = useState(false)
     const [isLoading, setIsLoading] = useState(false);
+
     const token = localStorage.getItem('token');
+
     const [formState, inputHandler] = useForm(
     {
       barCodeId: {

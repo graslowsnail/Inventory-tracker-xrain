@@ -7,6 +7,7 @@ import './PartItem.css';
 const PartItem = (part) => {
   const [isDeleting, setIsDeleting] = useState(false);
   const [showConfirmation, setShowConfirmation] = useState(false);
+  const token =  localStorage.getItem('token');
 
 
   const deletePartHandler = () => {
@@ -14,7 +15,8 @@ const PartItem = (part) => {
     fetch(`http://localhost:3002/api/parts/${part.id}`, {
       method: 'DELETE',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
       },
     })
       .then(response => {
