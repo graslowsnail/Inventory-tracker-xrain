@@ -7,6 +7,8 @@ import { VALIDATOR_MINLENGTH, VALIDATOR_REQUIRE } from '../../shared/util/valida
 import { useForm } from '../../shared/hooks/form-hook';
 
 const NewPart = () => {
+    const token = localStorage.getItem('token');
+
   const [formState, inputHandler] = useForm(
     {
       name: {
@@ -42,7 +44,8 @@ const NewPart = () => {
       const response = await fetch('http://localhost:3002/api/parts', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
           name: formState.inputs.name.value,

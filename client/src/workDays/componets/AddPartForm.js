@@ -11,6 +11,7 @@ const AddPartForm = ({ workDay, workDayId }) => {
   const [isSuccess, setIsSuccess] = useState(false);
     const [error, setError] = useState(false)
     const [isLoading, setIsLoading] = useState(false);
+    const token = localStorage.getItem('token');
     const [formState, inputHandler] = useForm(
     {
       barCodeId: {
@@ -27,7 +28,8 @@ const AddPartForm = ({ workDay, workDayId }) => {
             const response = await fetch(`http://localhost:3002/api/workdays/${workDayId}`, {
                 method: 'PUT',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`,
                 },
                 body: JSON.stringify({
                     barCodeId: formState.inputs.barCodeId.value

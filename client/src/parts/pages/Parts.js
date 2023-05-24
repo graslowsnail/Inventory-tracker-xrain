@@ -7,12 +7,11 @@ const Part = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [showConfirmation, setShowConfirmation]= useState(false);
-        const token = localStorage.getItem("token");
-
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
     fetch('http://localhost:3002/api/parts',
-                {
+        {
           headers: {
             Authorization: `Bearer ${token}`,
           },

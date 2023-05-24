@@ -16,9 +16,17 @@ const WorkDayDetail = () => {
     const [showConfirmation, setShowConfirmation] = useState(false);
     const [count, setCount] = useState(1);
 
+    const token = localStorage.getItem('token');
+
   useEffect(() => {
       setIsLoading(true);
-    fetch(`http://localhost:3002/api/workday/${workDayId}`)
+    fetch(`http://localhost:3002/api/workday/${workDayId}`,
+        {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        }
+    )
       .then(response => {
           if(!response.ok) {
               throw new Error('failed to fetch work day')
@@ -33,7 +41,7 @@ const WorkDayDetail = () => {
           console.error(`Error fetching workday: ${error.message}`)
           setIsLoading(false);
       });
-  }, [workDayId]);
+  }, [workDayId, token]);
 
   const deleteWorkdayHandler = () => {
     setIsDeleting(true);

@@ -6,9 +6,16 @@ const PartHistory = () => {
   const [partHistory, setPartHistory] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const token = localStorage.getItem('token');
 
     useEffect(() => {
-    fetch('http://localhost:3002/api/partHistory')
+    fetch('http://localhost:3002/api/partHistory',
+        {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        }
+    )
       .then(response => {
         if (!response.ok) {
           throw new Error('Failed to fetch partHistory');
@@ -23,7 +30,8 @@ const PartHistory = () => {
         setError(error.message);
         setLoading(false);
       });
-  }, []);
+  }, [token]);
+    
       if (loading) {
     return <div>Loading...</div>;
   }
