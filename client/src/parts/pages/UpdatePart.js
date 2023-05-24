@@ -12,8 +12,9 @@ import './PartForm.css';
 const UpdatePart = () => {
   const [isSuccess, setIsSuccess] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
+    const partId = useParams().partId;
+    const token = localStorage.getItem('token');
 
-  const partId = useParams().partId;
   const [formState, inputHandler, setFormData] = useForm(
     {
       name: {
@@ -37,7 +38,13 @@ const UpdatePart = () => {
   useEffect(() => {
     const fetchPart = async () => {
       try {
-        const response = await fetch(`http://localhost:3002/api/parts/${partId}`);
+        const response = await fetch(`http://localhost:3002/api/parts/${partId}`,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            }
+        );
         const responseData = await response.json();
         setFormData({
           name: {

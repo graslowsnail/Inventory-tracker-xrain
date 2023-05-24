@@ -47,7 +47,8 @@ const setPartHistoryHandler = async () => {
         const response = await fetch('http://localhost:3002/api/parts/copy-to-part-history', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
       }
     });
 
@@ -65,7 +66,8 @@ const resetPartHandler = async () => {
         const response = await fetch('http://localhost:3002/api/parts/reset', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
             },
         });
         //const data = await response.json();
