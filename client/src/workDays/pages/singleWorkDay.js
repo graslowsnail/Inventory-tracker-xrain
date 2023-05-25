@@ -48,7 +48,8 @@ const WorkDayDetail = () => {
     fetch(`http://localhost:3002/api/workdays/${workDayId}`,{
       method: 'DELETE',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
       }
     })
       .then(response => {

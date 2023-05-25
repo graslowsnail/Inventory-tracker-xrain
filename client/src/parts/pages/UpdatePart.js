@@ -70,15 +70,17 @@ const UpdatePart = () => {
       }
     };
     fetchPart();
-  }, [partId, setFormData]);
+  }, [partId, setFormData, token]);
 
   const partSubmitHandler = async event => {
+
     event.preventDefault();
     try {
       const response = await fetch(`http://localhost:3002/api/parts/${partId}`, {
         method: 'PUT',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+            Authorization: `Beares ${token}`,
         },
         body: JSON.stringify({
           name: formState.inputs.name.value,

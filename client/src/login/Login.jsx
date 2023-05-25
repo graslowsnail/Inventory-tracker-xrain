@@ -25,13 +25,24 @@ const Login = () => {
 
     const data = await response.json();
     localStorage.setItem("token", data.token);
-      console.log(data.token);
-    //window.location.reload();
+        window.location.href = '/';
+    console.log(data.token);
   };
 
   return (
     <div className="login">
-      <h1>Login</h1>
+
+        <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+          <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+            Sign in!
+          </h2>
+          <img
+            className="mx-auto h-50 w-auto"
+            src={xrainLogo}
+            alt="x-rain logo"
+          />
+        </div>
+
       <form onSubmit={handleSubmit}>
         <span>
           <label htmlFor="email">Email:</label>
@@ -63,16 +74,6 @@ const Login = () => {
         ```
       }
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
-        <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <img
-            className="mx-auto h-50 w-auto"
-            src={xrainLogo}
-            alt="x-rain logo"
-          />
-          <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-            Sign in!
-          </h2>
-        </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
           <form className="space-y-6" action="#" method="POST">

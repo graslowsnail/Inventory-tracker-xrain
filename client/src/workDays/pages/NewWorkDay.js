@@ -61,17 +61,6 @@ const NewWorkDay = () => {
             onInput={inputHandler}
         />
 
-      {/*
-        <Input 
-            id='partsUsed'
-            element='input'
-            type='text'
-            label='parts used'
-            validators={[VALIDATOR_REQUIRE() ]}
-            errorText='Please enter a parts used'
-            onInput={inputHandler}
-        />
-          */}
         <Button type='submit' disabled={!formState.isValid}>
           ADD WORKDAY
         </Button>
