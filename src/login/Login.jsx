@@ -5,29 +5,31 @@ import './Login.css';
 
 const Login = () => {
   //When the user submits the form, prevent the default action, grab the email and password from the form, send a POST request to the backend with the email and password, and if the response is successful, store the token in local storage and reload the page. 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    const { email, password } = event.target;
+const handleSubmit = async (event) => {
+  event.preventDefault();
+  const { email, password } = event.target;
 
-    const response = await fetch(
-        'http://localhost:3002/api/auth/login',
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: email.value,
-          password: password.value,
-        }),
-      }
-    );
+  const response = await fetch('http://localhost:3002/api/auth/login', {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email: email.value,
+      password: password.value,
+    }),
+  });
 
-    const data = await response.json();
+  const data = await response.json();
+  if (response.status === 200) {
+    // Token is valid, continue with the application logic
     localStorage.setItem("token", data.token);
-        window.location.href = '/';
-    console.log(data.token);
-  };
+    window.location.href = '/'; // Redirect to the desired page
+  } else {
+    // Token is invalid, redirect to the authentication page
+    window.location.href = '/auth-page'; // Replace with the actual authentication page URL
+  }
+};
 
   return (
     <div className="login">
