@@ -103,9 +103,9 @@ const WorkDayDetail = () => {
         <Card className="part-item__content">
           <div className="part-item__info">
             <h1>{workDay.name} {formattedDate}</h1>
-          <Card>
-          <h3>scan and add part!</h3>
-        <AddPartForm workDay={workDay} workDayId={workDayId}/>
+            < br/>
+            <h3>scan and add part!</h3>
+            <AddPartForm workDay={workDay} workDayId={workDayId}/>
 
           <h3> PART USED ON {formattedDate}</h3>
             <ul>
@@ -129,14 +129,10 @@ const WorkDayDetail = () => {
               </thead>
               <tbody className="divide-y divide-gray-200">
                 {workDay.partsUsed.map((part) => (
-                  <tr key={part.count}>
-                    <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
-                      {part.name}
-                    </td>
+                  <tr key={part._id}>
+                    <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">{part.name}</td>
                     <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{part.currentStock}</td>
                     <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{part.barCodeId}</td>
-                    <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
-                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -153,7 +149,6 @@ const WorkDayDetail = () => {
             ))}
               */}
             </ul>
-          </Card>
           </div>
           <div className="part-item__actions">
             <Button danger onClick={showConfirmationHandler} disabled={isDeleting}>
