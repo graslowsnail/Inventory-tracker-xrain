@@ -7,11 +7,21 @@ import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const token = localStorage?.getItem('token');
+
+root.render(
+    <App>
+    {token ? <App /> : <Login />}
+    </App>
+);
+
+
+/*
 root.render(
     <React.StrictMode>
     {token ? <App /> : <Login />}
     </React.StrictMode>
 );
+
 /* this was in the root.render before
     * this was causing curtin pages to render twice not sure why but oh well
   <React.StrictMode>

@@ -110,6 +110,14 @@ const WorkDayDetail = () => {
           <h3> PART USED ON {formattedDate}</h3>
             <ul>
 
+
+
+
+
+
+
+
+
 <table className="min-w-full divide-y divide-gray-300">
               <thead>
                 <tr>
@@ -117,10 +125,13 @@ const WorkDayDetail = () => {
                     Name
                   </th>
                   <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                    current Stock
+                    Title
                   </th>
                   <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                    barCodeId
+                    Email
+                  </th>
+                  <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                    Role
                   </th>
                   <th scope="col" className="relative py-3.5 pl-3 pr-4 sm:pr-0">
                     <span className="sr-only">Edit</span>
@@ -135,14 +146,17 @@ const WorkDayDetail = () => {
                     </td>
                     <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{part.currentStock}</td>
                     <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{part.barCodeId}</td>
+                    <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{person.role}</td>
                     <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
+                      <a href="#" className="text-indigo-600 hover:text-indigo-900">
+                        Edit<span className="sr-only">, {person.name}</span>
+                      </a>
                     </td>
                   </tr>
                 ))}
               </tbody>
             </table>
 
-          {/*
             {workDay.partsUsed.map(part => (
                 <div key={part._id} >
                 -Parts grabbed:{count}  
@@ -151,7 +165,6 @@ const WorkDayDetail = () => {
                 -(BARCODE ID: {part.barCodeId})
                 </div>
             ))}
-              */}
             </ul>
           </Card>
           </div>
