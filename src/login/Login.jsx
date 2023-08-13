@@ -27,7 +27,7 @@ const handleSubmit = async (event) => {
     window.location.href = '/'; // Redirect to the desired page
   } else {
     // Token is invalid, redirect to the authentication page
-    window.location.href = '/auth-page'; // Replace with the actual authentication page URL
+    window.location.href = '/login'; // Replace with the actual authentication page URL
   }
 };
 
