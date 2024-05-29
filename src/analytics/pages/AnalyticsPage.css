@@ -1,0 +1,68 @@
+
+.analytics-page-container {
+  padding: 20px;
+  margin: 20px;
+}
+/* Hover effect for rows */
+.ant-table-row.custom-row-height:hover td {
+  background-color: rgba(148, 110, 255, 0.16) !important; /* 16% transparency */
+}
+/* company logo and search bard container */
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  padding-right: 0px;
+  background-color: #fff;
+}
+
+.logo-and-info {
+  display: flex;
+  align-items: center;
+}
+
+.company-logo {
+  width: 50px;
+  height: 50px;
+  margin-right: 12px;
+}
+
+.company-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.company-name {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.company-subtitle {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
+.search-bar {
+  max-width: 500px;
+  width: 100%;
+  margin-left: auto; /* Ensure the search bar is pushed to the right */
+}
+
+
+/* Custom row height 
+.custom-row-height {
+  height: 55px; 
+}
+*/
+
+
+/* Prevent text from wrapping
+.ant-table-cell {
+  white-space: nowrap;
+} 
+ */
+
+

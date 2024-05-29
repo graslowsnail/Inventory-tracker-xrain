@@ -5,12 +5,13 @@ import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import MainNavigation from './shared/Header/MainNavigation';
 import NewPart from './parts/pages/NewPart';
 import Part from './parts/pages/Parts';
-import WorkDay from './workDays/pages/WorkDay';
+//import WorkDay from './workDays/pages/WorkDay';
 import NewWorkDay from './workDays/pages/NewWorkDay';
 import UpdatePart from './parts/pages/UpdatePart';
 import SingleWorkDay from './workDays/pages/singleWorkDay';
 import PartHistory from './parts/pages/PartsHistory';
 import Login from './login/Login.jsx';
+import AnalyticsPage from './analytics/pages/SuperAdminPage.js';
 
 const App = () => {
 
@@ -20,7 +21,7 @@ const App = () => {
       <main>
           <Routes>
               {/*workday routes bellow */}
-              <Route exact path='/' element={<WorkDay/>}/>
+              <Route exact path='/' element={<AnalyticsPage/>}/>
               <Route exact path='/new/workday' element={<NewWorkDay/>} />
               <Route exact path='/workday/:workDayId' element={<SingleWorkDay/>} />
               {/*part routes bellow */}
