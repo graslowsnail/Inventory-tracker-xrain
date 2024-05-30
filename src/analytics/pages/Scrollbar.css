@@ -4,13 +4,13 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1; /* Background of the scrollbar track */
+  background: #f1f1f1;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #946EFF; /* Scrollbar thumb color */
-  border-radius: 10px; /* Roundness of the scrollbar thumb */
-  border: 3px solid #f1f1f1; /* Padding around the scrollbar thumb */
+  background-color: #946EFF;
+  border-radius: 10px;
+  border: 3px solid #f1f1f1;
 }
 
 /* Custom scrollbar for Firefox */
@@ -21,7 +21,7 @@
 
 /* For Edge and IE */
 body {
-  -ms-overflow-style: none; /* Hide default scrollbar in IE */
+  -ms-overflow-style: none;
 }
 
 body::-webkit-scrollbar {
