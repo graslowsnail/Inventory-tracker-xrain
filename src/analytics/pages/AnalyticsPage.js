@@ -1,19 +1,42 @@
 //super admin analytics page.
 import React, { useState, useEffect } from 'react';
 import { Table } from "antd";
-import { dataSource, columns } from './testData.js';
+import { columns } from './testData.js';
 import './AnalyticsPage.css';
 import SearchBar from './SearchBar';
 
 
 
 const AnalyticsPage= () => {
-  const [filteredData, setFilteredData] = useState(dataSource);
+  const [filteredData, setFilteredData] = useState();
+  const [dataSource, setDataSource] = useState([]);
+
+   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('https://dev-app-api.withpipeline.com/customer_analytics/customer_analytics/', {
+          method: 'GET',
+          headers: {
+            'accept': 'application/json',
+          }
+        });
+        const data = await response.json();
+        console.log(data);
+        setDataSource(data);
+        setFilteredData(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
 
   const handleSearch = (value) => {
     const filtered = dataSource.filter(item =>
-      item.Company_Name.toLowerCase().includes(value.toLowerCase()) ||
-      item.Email.toLowerCase().includes(value.toLowerCase())
+      item.company_name.toLowerCase().includes(value.toLowerCase()) ||
+      item.user_email.toLowerCase().includes(value.toLowerCase())
     );
     setFilteredData(filtered);
   };
