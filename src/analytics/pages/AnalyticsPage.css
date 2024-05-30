@@ -61,18 +61,15 @@
   margin-left: auto; /* Ensure the search bar is pushed to the right */
 }
 
-
-/* Custom row height 
-.custom-row-height {
-  height: 55px; 
+/*removes border inbetween column's in table header*/
+.ant-table-thead > tr > th {
+  border-right: none !important; /* Remove right border to eliminate dividers */
 }
-*/
 
-
-/* Prevent text from wrapping
-.ant-table-cell {
-  white-space: nowrap;
-} 
- */
-
+.ant-table-thead > tr > th:last-child {
+  border-right: 1px solid #f0f0f0 !important; /* Add right border to the last header column */
+}
+.ant-table-tbody > tr > td:last-child {
+  border-right: 1px solid #f0f0f0 !important; /* Add right border to the last body column */
+}
 
