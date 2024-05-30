@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Table } from "antd";
 import { dataSource, columns } from './testData.js';
-import './AnalyticsPage.css'; // Import the CSS file
+import './AnalyticsPage.css';
 import SearchBar from './SearchBar';
 
 
