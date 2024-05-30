@@ -295,7 +295,7 @@ export const columns = [
     dataIndex: 'Company_Name',
     key: 'Compay_name',
     sorter: (a, b) => a.Company_Name.localeCompare(b.Company_Name),
-    defaultSortOrder: 'descend', // Default to most recent at top
+    //defaultSortOrder: 'descend', //Default to most recent at top
     width: 200, // Set the width for the Email column
   },
   {

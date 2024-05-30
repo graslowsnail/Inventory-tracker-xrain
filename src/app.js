@@ -1,5 +1,6 @@
 //import React, { Fragment } from 'react';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import '../src/analytics/pages/Scrollbar.css';
 //might need Navigate look into that 
 
 import MainNavigation from './shared/Header/MainNavigation';

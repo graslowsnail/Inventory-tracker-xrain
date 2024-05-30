@@ -1,0 +1,30 @@
+/* Custom scrollbar for Webkit browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 12px; /* Width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Background of the scrollbar track */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #946EFF; /* Scrollbar thumb color */
+  border-radius: 10px; /* Roundness of the scrollbar thumb */
+  border: 3px solid #f1f1f1; /* Padding around the scrollbar thumb */
+}
+
+/* Custom scrollbar for Firefox */
+* {
+  scrollbar-width: thin; /* Make the scrollbar thin */
+  scrollbar-color: #946EFF #f1f1f1; /* Scrollbar thumb and track color */
+}
+
+/* For Edge and IE */
+body {
+  -ms-overflow-style: none; /* Hide default scrollbar in IE */
+}
+
+body::-webkit-scrollbar {
+  display: none; /* Hide default scrollbar in Edge */
+}
+
