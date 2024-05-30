@@ -34,16 +34,18 @@ const AnalyticsPage= () => {
 
       </div>
 
-      <Table
-        bordered
-        dataSource={filteredData}
-        columns={columns}
-        scroll={{ x: 'max-content', y: 1500 }}
-        rowHoverable={true}
-        pagination={false}
-        rowClassName="custom-row-height" // Assign custom class
-        tableLayout="auto" // Allow columns to adjust their width based on content
-      />
+      <div className="table-container">
+        <Table
+          bordered
+          dataSource={filteredData}
+          columns={columns}
+          scroll={{ x: 'max-content', y: 1500 }}
+          rowHoverable={true}
+          pagination={false}
+          rowClassName="custom-row-height" // Assign custom class
+          tableLayout="auto" // Allow columns to adjust their width based on content
+        />
+      </div>
     </div>
   );
 };
