@@ -1,10 +1,10 @@
 //super admin analytics page.
 import React, { useState, useEffect } from 'react';
-import { Table, Input } from "antd";
+import { Table } from "antd";
 import { dataSource, columns } from './testData.js';
 import './AnalyticsPage.css'; // Import the CSS file
+import SearchBar from './SearchBar';
 
-const { Search } = Input;
 
 
 const AnalyticsPage= () => {
@@ -19,7 +19,7 @@ const AnalyticsPage= () => {
   };
 
 
-  return ( 
+  return (
     <div className="analytics-page-container">
       <div className="header-container">
         <div className="logo-and-info">
@@ -28,22 +28,21 @@ const AnalyticsPage= () => {
             <h1 className="company-name">Pipeline</h1>
             <p className="company-subtitle">Customer Analytics</p>
           </div>
+        </div>
+
+      <SearchBar onSearch={handleSearch} />
+
       </div>
 
-      <Search
-        placeholder="Search..."
-        onSearch={handleSearch}
-        className="search-bar"
-      />
-    </div>
-
-    <Table
-      bordered
-      dataSource={filteredData}
-      columns={columns}
-      scroll={{ x:'max-content', y:1500 }}
-      pagination={false}
-      rowClassName="custom-row-height"// Assign custom class dynamically
+      <Table
+        bordered
+        dataSource={filteredData}
+        columns={columns}
+        scroll={{ x: 'max-content', y: 1500 }}
+        rowHoverable={true}
+        pagination={false}
+        rowClassName="custom-row-height" // Assign custom class
+        tableLayout="auto" // Allow columns to adjust their width based on content
       />
     </div>
   );
