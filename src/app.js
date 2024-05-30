@@ -12,7 +12,7 @@ import UpdatePart from './parts/pages/UpdatePart';
 import SingleWorkDay from './workDays/pages/singleWorkDay';
 import PartHistory from './parts/pages/PartsHistory';
 import Login from './login/Login.jsx';
-import AnalyticsPage from './analytics/pages/SuperAdminPage.js';
+import AnalyticsPage from './analytics/pages/AnalyticsPage.js';
 
 const App = () => {
 
